@@ -51,7 +51,9 @@ def load_scienceqa(cfg, split):
     from datasets import load_dataset
 
     d = cfg["datasets"]["scienceqa"]
-    return load_dataset(d["repo"], d["config"], split=d["splits"][split])
+    if d.get("config"):
+        return load_dataset(d["repo"], d["config"], split=d["splits"][split])
+    return load_dataset(d["repo"], split=d["splits"][split])
 
 
 def grade_num(grade):
