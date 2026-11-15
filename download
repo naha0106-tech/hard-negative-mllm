@@ -1,0 +1,11 @@
+# 무거운 파일은 GitHub에 올리지 않습니다
+data/d1_audit_images/
+data/partial_*.parquet
+checkpoints/
+*.safetensors
+*.bin
+
+# 파이썬 / 코랩 부산물
+__pycache__/
+*.pyc
+.ipynb_checkpoints/

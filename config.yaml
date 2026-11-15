@@ -1,0 +1,64 @@
+# ============================================================
+# 마스터 설정 파일 — 모든 스크립트는 숫자를 여기서만 읽습니다.
+# 값을 바꾸면 데이터가 달라지므로, 바꿀 때는 꼭 커밋 메시지에 이유를 적으세요.
+# ============================================================
+
+# ---- 시드 (계획서 1.2) ----
+seeds:
+  val500: 1234        # 검증 500문항 층화 추출
+  aux_eval: 2026      # AI2D / POPE 추출
+  d1_audit: 7         # D1 수작업 검수 50쌍 추출
+  train: [0, 1, 2]    # 학습 세트 표집 및 학습 실행
+
+# ---- 데이터셋 ----
+datasets:
+  scienceqa:
+    repo: lmms-lab/ScienceQA
+    config: ScienceQA-IMG
+    splits: {train: train, validation: validation, test: test}
+  ai2d:
+    repo: lmms-lab/ai2d      # 처음 실행 때 이름이 맞는지 확인
+    split: test
+    n: 1000
+  pope:
+    repo: lmms-lab/POPE
+    split: test
+    n_per_category: 500
+    categories: [random, adversarial]
+
+val_n: 500
+
+# ---- 모델 ----
+# revision: Hugging Face 모델 페이지 > Files and versions > 최신 커밋 해시를 복사해서 붙여넣기
+#           (null이면 최신 버전을 쓰는데, 재현성을 위해 꼭 채우세요)
+models:
+  smolvlm:
+    id: HuggingFaceTB/SmolVLM-500M-Instruct
+    revision: null
+    longest_edge: null      # 이미지 크기 제한(속도 조절용). null = 기본값
+  qwen:
+    id: Qwen/Qwen2.5-VL-3B-Instruct
+    revision: null
+    max_pixels: 401408      # 512*28*28, 이미지 토큰 수 제한
+
+# ---- 난이도 측정 ----
+scoring:
+  batch_size: 16
+  save_every: 50            # 배치 50개마다 중간 저장(코랩 끊김 대비)
+
+# ---- 관문 A 기준 ----
+gate_a:
+  a1_margin_over_chance: 0.10
+  a2_max_acc: 0.85
+  a3_min_spearman: 0.5
+  a4_min_items_per_bin: 1600
+
+# ---- 학습 세트 ----
+trainsets:
+  n_max: 1600
+  smolvlm:
+    conditions: [Rand, D1, D2, D3, D4, D5, Full]
+    sizes: [100, 200, 400, 800, 1600]
+  qwen:
+    conditions: [Rand, D1, D3, D5]
+    sizes: [200, 1600]

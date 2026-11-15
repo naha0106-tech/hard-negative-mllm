@@ -1,0 +1,10 @@
+# 처음 성공적으로 실행한 뒤 `pip freeze | grep -E "torch|transformers|datasets|accelerate|pandas|numpy|pyarrow"`
+# 결과로 이 파일의 버전을 정확히 고정하고 다시 커밋하세요.
+transformers==4.51.3
+datasets>=2.19
+accelerate
+pandas
+numpy
+pyarrow
+pyyaml
+pillow
