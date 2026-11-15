@@ -35,7 +35,7 @@ models:
   smolvlm:
     id: HuggingFaceTB/SmolVLM-500M-Instruct
     revision: null
-    longest_edge: null      # 이미지 크기 제한(속도 조절용). null = 기본값
+    longest_edge: 1024      # 이미지 크기 제한(속도 조절용). null = 기본값
   qwen:
     id: Qwen/Qwen2.5-VL-3B-Instruct
     revision: null
@@ -43,7 +43,7 @@ models:
 
 # ---- 난이도 측정 ----
 scoring:
-  batch_size: 16
+  batch_size: 4
   save_every: 50            # 배치 50개마다 중간 저장(코랩 끊김 대비)
 
 # ---- 관문 A 기준 ----
