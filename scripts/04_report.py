@@ -188,6 +188,41 @@ def main():
         "![순서 일치도](fig3_order_consistency.png)", "",
         audit_txt, "",
     ]
+
+    # ---- 2단계 보완 항목 (02b_extra_analysis.py 결과가 있으면 표시)
+    extra = ["## 3-1. 2단계 보완 항목", ""]
+    if "bin_distribution" in rep:
+        bd = rep["bin_distribution"]
+        for col, title in [("subject", "과목"), ("grade_band", "학년대"), ("K", "선택지 수 K"),
+                           ("has_hint", "hint 유무")]:
+            cats = sorted(bd[col]["all_pairs"].keys())
+            rows = [[b] + [f"{bd[col]['by_bin'][b].get(c, 0):.0%}" for c in cats]
+                    for b in sorted(bd[col]["by_bin"])]
+            rows.append(["전체"] + [f"{bd[col]['all_pairs'][c]:.0%}" for c in cats])
+            extra += [f"### 구간별 {title} 분포 (오답 쌍 기준)", md_table(rows, ["구간"] + cats), ""]
+        sk = bd["max_skew_by_bin"]
+        extra += ["**구간별 가장 큰 쏠림** (구간 비율 − 전체 비율): " + ", ".join(
+            f"{b} {v['category']} {v['gap_vs_all']:+.0%}" for b, v in sorted(sk.items())), ""]
+    else:
+        extra += ["- 구간별 과목·학년·K·hint 분포: 미실행 (`02b --task bindist`)", ""]
+    lf = cfg.get("letter_format", {}).get(args.model)
+    extra += [f"- 정답 글자 형식 config.yaml 기록: {'`' + lf + '`' if lf else '미기록'}"]
+    if "lp4_check" in rep:
+        c = rep["lp4_check"]
+        extra += [f"- 로그확률 4개 값 저장 완료. 기존 m과의 최대 차이: m_A {c['max_abs_diff_m_A']:.4f}, "
+                  f"m_B {c['max_abs_diff_m_B']:.4f} (구간은 2단계 값 유지)"]
+    else:
+        extra += ["- 로그확률 4개 값(lp): 미저장 (m_A, m_B 차이값만 저장)"]
+    idp = f"{DATA}/item_difficulty_{args.model}.parquet"
+    if os.path.exists(idp):
+        idf = pd.read_parquet(idp)
+        v = idf[idf.split == "validation"]
+        extra += [f"- val·test 문항 난이도 계산 완료 (분석 전용). validation {len(v)}문항: 학습 전 정확도 "
+                  f"{v.base_correct.mean():.3f}, 평균 margin {v.margin.mean():.3f}. "
+                  f"test {int((idf.split == 'test').sum())}문항은 계산만 하고 본실험 분석 전까지 열람하지 않음"]
+    else:
+        extra += ["- val·test 문항 난이도: 미실행 (`02b --task items`)"]
+    lines += extra + [""]
     if build:
         lines += ["## 4. 학습 세트 구성",
                   f"- 생성 파일: {build['n_files']}개 "
