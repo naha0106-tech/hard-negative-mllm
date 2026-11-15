@@ -55,10 +55,10 @@ gate_a:
 
 # ---- 학습 세트 ----
 trainsets:
-  n_max: 1600
+  n_max: 1200
   smolvlm:
     conditions: [Rand, D1, D2, D3, D4, D5, Full]
-    sizes: [100, 200, 400, 800, 1600]
+    sizes: [100, 200, 400, 800, 1200]
   qwen:
     conditions: [Rand, D1, D3, D5]
-    sizes: [200, 1600]
+    sizes: [200, 1200]
