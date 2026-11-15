@@ -1,0 +1,16 @@
+[모델] smolvlm, 글자 형식 space
+[validation] 2097문항 계산 시작
+  ... validation 400/2097
+  ... validation 800/2097
+  ... validation 1200/2097
+  ... validation 1600/2097
+  ... validation 2000/2097
+[test] 2017문항 계산 시작
+  ... test 400/2017
+  ... test 800/2017
+  ... test 1200/2017
+  ... test 1600/2017
+  ... test 2000/2017
+[validation] 학습 전 정확도 0.633, 평균 margin 1.086
+[test] 계산만 하고 결과는 보지 않습니다 (본실험 분석 때 사용)
+==> data/item_difficulty_smolvlm.parquet 저장
