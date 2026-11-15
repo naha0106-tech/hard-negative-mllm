@@ -62,3 +62,7 @@ trainsets:
   qwen:
     conditions: [Rand, D1, D3, D5]
     sizes: [200, 1200]
+
+# ---- 2단계에서 확정한 정답 글자 형식 (학습 타깃·채점에 동일 적용) ----
+letter_format:
+  smolvlm: space

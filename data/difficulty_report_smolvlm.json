@@ -54,5 +54,159 @@
       "pass": false
     }
   },
-  "all_pass": false
+  "all_pass": false,
+  "bin_distribution": {
+    "subject": {
+      "by_bin": {
+        "D1": {
+          "language science": 0.0258,
+          "natural science": 0.8588,
+          "social science": 0.1154
+        },
+        "D2": {
+          "language science": 0.0294,
+          "natural science": 0.6745,
+          "social science": 0.296
+        },
+        "D3": {
+          "language science": 0.0168,
+          "natural science": 0.5131,
+          "social science": 0.4701
+        },
+        "D4": {
+          "language science": 0.0074,
+          "natural science": 0.2211,
+          "social science": 0.7715
+        },
+        "D5": {
+          "language science": 0.0016,
+          "natural science": 0.0816,
+          "social science": 0.9169
+        }
+      },
+      "all_pairs": {
+        "social science": 0.5148,
+        "natural science": 0.469,
+        "language science": 0.0162
+      }
+    },
+    "grade_band": {
+      "by_bin": {
+        "D1": {
+          "G1-6": 0.5297,
+          "G7-12": 0.4703
+        },
+        "D2": {
+          "G1-6": 0.5819,
+          "G7-12": 0.4181
+        },
+        "D3": {
+          "G1-6": 0.6835,
+          "G7-12": 0.3165
+        },
+        "D4": {
+          "G1-6": 0.8308,
+          "G7-12": 0.1692
+        },
+        "D5": {
+          "G1-6": 0.799,
+          "G7-12": 0.201
+        }
+      },
+      "all_pairs": {
+        "G1-6": 0.6854,
+        "G7-12": 0.3146
+      }
+    },
+    "K": {
+      "by_bin": {
+        "D1": {
+          "2": 0.2696,
+          "3": 0.457,
+          "4": 0.1295,
+          "5": 0.144
+        },
+        "D2": {
+          "2": 0.2862,
+          "3": 0.3557,
+          "4": 0.3298,
+          "5": 0.0283
+        },
+        "D3": {
+          "2": 0.1743,
+          "3": 0.3423,
+          "4": 0.4834,
+          "5": 0.0
+        },
+        "D4": {
+          "2": 0.0554,
+          "3": 0.1905,
+          "4": 0.7541,
+          "5": 0.0
+        },
+        "D5": {
+          "2": 0.025,
+          "3": 0.0742,
+          "4": 0.9009,
+          "5": 0.0
+        }
+      },
+      "all_pairs": {
+        "4": 0.5203,
+        "3": 0.2836,
+        "2": 0.1617,
+        "5": 0.0344
+      }
+    },
+    "has_hint": {
+      "by_bin": {
+        "D1": {
+          "False": 0.1033,
+          "True": 0.8967
+        },
+        "D2": {
+          "False": 0.2034,
+          "True": 0.7966
+        },
+        "D3": {
+          "False": 0.4228,
+          "True": 0.5772
+        },
+        "D4": {
+          "False": 0.8025,
+          "True": 0.1975
+        },
+        "D5": {
+          "False": 0.9582,
+          "True": 0.0418
+        }
+      },
+      "all_pairs": {
+        "True": 0.5009,
+        "False": 0.4991
+      }
+    },
+    "max_skew_by_bin": {
+      "D1": {
+        "category": "subject=social science",
+        "gap_vs_all": -0.3994
+      },
+      "D2": {
+        "category": "subject=social science",
+        "gap_vs_all": -0.2188
+      },
+      "D3": {
+        "category": "subject=social science",
+        "gap_vs_all": -0.0447
+      },
+      "D4": {
+        "category": "subject=social science",
+        "gap_vs_all": 0.2567
+      },
+      "D5": {
+        "category": "subject=social science",
+        "gap_vs_all": 0.4021
+      }
+    }
+  }
 }
