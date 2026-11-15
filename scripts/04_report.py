@@ -194,7 +194,26 @@ def main():
                   f"(조건 {len(conds)} × 규모 {len(cfg['trainsets'][args.model]['sizes'])} × 시드 {len(cfg['seeds']['train'])})",
                   "- 자동 검증 결과:", "", md_table([[k, v if isinstance(v, str) else "경고 있음 (로그 참고)"]
                                                 for k, v in build["checks"].items()], ["검증", "결과"]), "",
-                  f"- 층 대체 횟수(조건_시드별): {build['substitutions']}", ""]
+                  ""]
+        # 조건별 과목 구성 (N = n_max, seed 0) vs 목표 비율
+        n, s0 = cfg["trainsets"]["n_max"], cfg["seeds"]["train"][0]
+        subj_rows, subjects = [], sorted(tr.subject.unique())
+        target = tr.subject.value_counts(normalize=True)
+        subj_rows.append(["목표 (train 전체)"] + [f"{target.get(x, 0):.0%}" for x in subjects] + ["-"])
+        for c in conds:
+            f = os.path.join(TRAINSETS, args.model, f"{c}_N{n}_s{s0}.jsonl")
+            if not os.path.exists(f):
+                continue
+            recs = [json.loads(l) for l in open(f, encoding="utf-8")]
+            sub = pd.Series([r["stratum"].split("|")[0] for r in recs]).value_counts(normalize=True)
+            rate = sum(r["substituted"] for r in recs) / len(recs)
+            subj_rows.append([c] + [f"{sub.get(x, 0):.0%}" for x in subjects] + [f"{rate:.0%}"])
+        lines += [f"### 조건별 과목 구성 (N={n}, seed {s0})",
+                  md_table(subj_rows, ["조건"] + subjects + ["층 대체 비율"]), "",
+                  "> 난이도 구간과 과목이 함께 움직인다: 쉬운 오답(D4·D5)은 social science에, "
+                  "어려운 오답(D1)은 natural science에 몰려 있어, 목표 과목 비율을 맞추지 못한 자리는 "
+                  "다른 과목 문항으로 대체되었다. 결과 해석 시 과목 효과와 난이도 효과가 섞일 수 있으므로 "
+                  "과목별 정확도를 함께 보고한다.", ""]
         if has_fig4:
             lines += ["![학습 세트 난이도](fig4_trainset_difficulty.png)", ""]
     with open(f"{out}/dataset_report.md", "w", encoding="utf-8") as f:
