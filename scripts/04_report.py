@@ -180,6 +180,10 @@ def main():
         "![m 분포](fig1_m_distribution.png)", "",
         md_table(bin_rows, ["구간", "m 범위", "평균 m", "오답 쌍 수", "고유 문항 수"]), "",
         "## 3. 관문 A (측정 타당성)", md_table(gate_rows, ["항목", "결과", "값", "기준"]), "",
+        *([f"> **관문 A4 미통과 대응 (계획서 3.3):** 가장 작은 구간이 {min(per_bin.values()):,}문항이므로 "
+           f"학습 세트 최대 크기 N_max를 {thr:,} → {cfg['trainsets']['n_max']:,}로 낮추었다. "
+           f"규모 격자: {cfg['trainsets'][args.model]['sizes']}", ""]
+          if not rep["checks"]["A4_구간크기"]["pass"] else []),
         "![구간별 문항 수](fig2_items_per_bin.png)", "",
         "![순서 일치도](fig3_order_consistency.png)", "",
         audit_txt, "",
