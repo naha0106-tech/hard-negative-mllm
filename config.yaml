@@ -13,8 +13,8 @@ seeds:
 # ---- 데이터셋 ----
 datasets:
   scienceqa:
-    repo: lmms-lab/ScienceQA
-    config: ScienceQA-IMG
+    repo: derek-thomas/ScienceQA   # train/validation/test 모두 있는 원본 (이미지 있는 문항만 골라 씀)
+    config: null
     splits: {train: train, validation: validation, test: test}
   ai2d:
     repo: lmms-lab/ai2d      # 처음 실행 때 이름이 맞는지 확인
