@@ -12,6 +12,7 @@
 """
 import numpy as np
 import pandas as pd
+from datasets import Image
 
 from common import (DATA, Logger, grade_num, largest_remainder, load_config,
                     load_scienceqa, save_json)
@@ -23,15 +24,20 @@ def build_items(cfg, log):
         ds = load_scienceqa(cfg, split)
         # 이미지 열은 빼고 읽습니다(빠르고 가벼움). 이미지는 나중에 row_idx로 다시 꺼냅니다.
         cols = [c for c in ds.column_names if c != "image"]
-        # (ScienceQA-IMG는 이미지가 있는 문항만 모은 버전이라 이미지 유무 검사는 생략)
         meta = ds.select_columns(cols).to_pandas()
-        log(f"[{split}] 원본 {len(meta)}문항")
+        # 이미지 유무만 빠르게 확인 (그림을 실제로 열지 않음)
+        raw_img = ds.select_columns(["image"]).cast_column("image", Image(decode=False))["image"]
+        has_image = [x is not None and (x.get("bytes") or x.get("path")) for x in raw_img]
+        log(f"[{split}] 원본 {len(meta)}문항 (이미지 있는 문항 {sum(bool(h) for h in has_image)})")
 
-        removed = {"bad_answer": 0, "dup_choices": 0}
+        removed = {"no_image": 0, "bad_answer": 0, "dup_choices": 0}
         for row_idx, r in meta.iterrows():
             choices = list(r["choices"])
             K = len(choices)
             ans = int(r["answer"])
+            if not has_image[row_idx]:
+                removed["no_image"] += 1
+                continue
             if not (0 <= ans < K):
                 removed["bad_answer"] += 1
                 continue
@@ -60,7 +66,8 @@ def build_items(cfg, log):
         log(f"[{split}] 제거: {removed}")
     items = pd.DataFrame(rows)
     for split in ["train", "validation", "test"]:
-        log(f"[{split}] 남은 문항: {(items.split == split).sum()}")
+        log(f"[{split}] 남은 문항: {(items.split == split).sum()} "
+            f"(정상이면 약 {dict(train=6218, validation=2097, test=2017)[split]})")
     return items
 
 
