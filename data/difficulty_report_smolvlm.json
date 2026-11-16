@@ -208,5 +208,10 @@
         "gap_vs_all": 0.4021
       }
     }
+  },
+  "lp4_check": {
+    "max_abs_diff_m_A": 0.0,
+    "max_abs_diff_m_B": 0.0,
+    "note": "lp 원값은 2단계 이후 재계산. m·구간은 2단계 값을 그대로 유지"
   }
 }

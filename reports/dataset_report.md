@@ -104,7 +104,7 @@ D1 수작업 검수: 추후 진행 예정.
 **구간별 가장 큰 쏠림** (구간 비율 − 전체 비율): D1 subject=social science -40%, D2 subject=social science -22%, D3 subject=social science -4%, D4 subject=social science +26%, D5 subject=social science +40%
 
 - 정답 글자 형식 config.yaml 기록: `space`
-- 로그확률 4개 값(lp): 미저장 (m_A, m_B 차이값만 저장)
+- 로그확률 4개 값 저장 완료. 기존 m과의 최대 차이: m_A 0.0000, m_B 0.0000 (구간은 2단계 값 유지)
 - val·test 문항 난이도 계산 완료 (분석 전용). validation 2097문항: 학습 전 정확도 0.633, 평균 margin 1.086. test 2017문항은 계산만 하고 본실험 분석 전까지 열람하지 않음
 
 ## 4. 학습 세트 구성
