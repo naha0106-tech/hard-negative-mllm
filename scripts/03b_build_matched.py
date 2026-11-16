@@ -72,10 +72,13 @@ def position_sequence(seed, n_max):
 
 
 def pick_distractors(g):
-    """한 문항의 오답들(g)에서 Hard / Mid / Easy를 고릅니다. 동점이면 pair_id 순서로."""
+    """한 문항의 오답들(g)에서 Hard / Mid / Easy를 고릅니다. 동점이면 pair_id 순서로.
+    오답이 2개뿐이면 Mid는 None."""
     g = g.sort_values(["m", "pair_id"])
     hard, easy = g.iloc[0], g.iloc[-1]
     middle = g.iloc[1:-1]
+    if len(middle) == 0:
+        return hard, None, easy
     med = g.m.median()
     mid = middle.iloc[(middle.m - med).abs().argsort().iloc[0]]
     return hard, mid, easy
@@ -88,6 +91,9 @@ def main():
     cfg = load_config()
     log = Logger(f"03b_matched_{args.model}.log")
     mc = ensure_config(cfg, log)
+    if mc["min_K"] < 4 and "Mid" in mc["conditions"]:
+        raise SystemExit("min_K가 4보다 작으면 오답이 2개인 문항이 있어 Mid를 만들 수 없습니다. "
+                         "config.yaml의 matched.conditions에서 Mid를 빼세요.")
     n_max, sizes, conds, seeds = mc["n_max"], mc["sizes"], mc["conditions"], cfg["seeds"]["train"]
 
     items = pd.read_parquet(f"{DATA}/items.parquet")
@@ -179,32 +185,34 @@ def main():
                 assert [r["item_id"] for r in files[(c, n, s)]] == ref, f"[검증4 실패] {c} N{n} s{s} 문항 불일치"
     res["4_모든조건_문항일치"] = "통과 (과목·지문·그림·학년 완전 동일)"
     ties = 0
+    levels = [c for c in ["Hard", "Mid", "Easy"] if c in conds]
     for s in seeds:
         for t in range(n_max):
-            mh, mm, me = (files[(c, max(sizes), s)][t]["m"] for c in ["Hard", "Mid", "Easy"])
-            assert mh <= mm <= me, f"[검증5 실패] s{s} 슬롯{t + 1} m 순서 {mh}, {mm}, {me}"
-            ties += (mh == mm) + (mm == me)
-    res["5_문항안_난이도순서"] = f"통과 (모든 문항에서 Hard ≤ Mid ≤ Easy, 동점 {ties}건)"
+            ms = [files[(c, max(sizes), s)][t]["m"] for c in levels]
+            assert all(a <= b for a, b in zip(ms, ms[1:])), f"[검증5 실패] s{s} 슬롯{t + 1} m 순서 {ms}"
+            ties += sum(a == b for a, b in zip(ms, ms[1:]))
+    res["5_문항안_난이도순서"] = f"통과 (모든 문항에서 {' ≤ '.join(levels)}, 동점 {ties}건)"
     for k, v in res.items():
         log(f"[검증 {k}] {v}")
 
     # ---------------- 요약 보고
     s0 = seeds[0]
     rows, data = [], []
-    for c in ["Hard", "Mid", "Easy", "Rand"]:
+    shown = [c for c in ["Hard", "Mid", "Easy", "Rand"] if c in conds]
+    for c in shown:
         ms = np.array([r["m"] for r in files[(c, n_max, s0)]])
         bins = Counter(r["bin"] for r in files[(c, n_max, s0)])
         data.append(ms)
         rows.append([c, f"{ms.mean():.3f}", f"{np.median(ms):.3f}",
                      " / ".join(f"{bins.get(k, 0) / len(ms):.0%}" for k in range(1, 6))])
-    sub = Counter(r["stratum"].split("|")[0] for r in files[("Hard", n_max, s0)])
-    hint = np.mean([bool(str(r["hint"]).strip()) for r in files[("Hard", n_max, s0)]])
+    sub = Counter(r["stratum"].split("|")[0] for r in files[(conds[0], n_max, s0)])
+    hint = np.mean([bool(str(r["hint"]).strip()) for r in files[(conds[0], n_max, s0)]])
 
     fig, ax = plt.subplots(figsize=(6.5, 3.8), facecolor=SURFACE)
     ax.set_facecolor(SURFACE)
-    bp = ax.boxplot(data, tick_labels=["Hard", "Mid", "Easy", "Rand"], patch_artist=True,
+    bp = ax.boxplot(data, tick_labels=shown, patch_artist=True,
                     showfliers=False, widths=0.55, medianprops={"color": SURFACE, "linewidth": 2})
-    for patch, c in zip(bp["boxes"], ["Hard", "Mid", "Easy", "Rand"]):
+    for patch, c in zip(bp["boxes"], shown):
         patch.set_facecolor(COLORS[c]); patch.set_edgecolor(SURFACE)
     for el in ("whiskers", "caps"):
         for line in bp[el]:
