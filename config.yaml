@@ -66,3 +66,10 @@ trainsets:
 # ---- 2단계에서 확정한 정답 글자 형식 (학습 타깃·채점에 동일 적용) ----
 letter_format:
   smolvlm: space
+
+# ---- 3단계-B: 같은 문제, 다른 오답 (문항 일치 설계) ----
+matched:
+  min_K: 3
+  conditions: ['Hard', 'Easy', 'Rand', 'Full']
+  sizes: [100, 200, 400, 800, 1200]
+  n_max: 1200
