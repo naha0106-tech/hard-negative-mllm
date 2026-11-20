@@ -73,3 +73,50 @@ matched:
   conditions: ['Hard', 'Easy', 'Rand', 'Full']
   sizes: [100, 200, 400, 800, 1200]
   n_max: 1200
+
+# ============================================================
+# 4단계: 파일럿 / 본실험 학습 설정 (파일럿 실행 가이드 4장)
+# ============================================================
+paths:
+  runs_dir: /content/drive/MyDrive/hn/runs   # 결과는 모두 구글 드라이브에 저장
+
+train:
+  precision: fp16          # T4: 모델 본체 fp16, LoRA fp32, autocast fp16 + GradScaler
+  lora:
+    r: 16
+    alpha: 32
+    dropout: 0.05
+    target_regex: '^(?!.*(vision_model|connector)).*\.(q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj)$'
+  lr_candidates: [5.0e-5, 1.0e-4, 2.0e-4]
+  lr: null                 # 파일럿 B2에서 확정 후 기록
+  micro_batch: 4           # 한 번에 GPU에 올리는 문항 수
+  grad_accum: 4            # 실효 배치 = 4 x 4 = 16
+  min_steps: 150           # 최대 step = max(150, ceil(4N/16))
+  epochs_equiv: 4
+  warmup_ratio: 0.05
+  warmup_min_steps: 10
+  eval_every: 25
+  patience: 4              # 검증 4번 연속 개선 없으면 조기 종료
+  max_grad_norm: 1.0
+  max_length: 2048         # 넘는 문항이 있으면 자르지 않고 멈춤
+  eval_batch: 8
+  diverge_drop: 0.05       # 최고 검증 정확도 < 무학습 - 5%p 이면 발산
+
+pilot:
+  zs_ref_acc: 0.642        # 2단계 val500 무학습 정확도 (C1 비교값)
+  c1_tolerance: 0.005
+  tie_items: 2             # 학습률 1등과 2문항 이내면 작은 학습률
+  b1_margin: 0.02
+  b4_min_disagree: 0.05
+  b4_noise_ratio: 2        # Hard-Easy 불일치율이 반복 실행(P4-P7) 불일치율의 2배 이상이어야 함
+  test_eval_factor: 8      # test+AI2D+POPE 평가 시간 ~ val500 채점 시간 x 8
+  b5_warn_diff: 0.01
+  b6_min_letter_rate: 0.95
+  runs:                    # 파일럿 실행 가이드 5장
+    P1: {trainset: trainsets/smolvlm_matched/Rand_N400_s0.jsonl,  lr: 5.0e-5}
+    P2: {trainset: trainsets/smolvlm_matched/Rand_N400_s0.jsonl,  lr: 1.0e-4}
+    P3: {trainset: trainsets/smolvlm_matched/Rand_N400_s0.jsonl,  lr: 2.0e-4}
+    P4: {trainset: trainsets/smolvlm_matched/Rand_N1200_s0.jsonl, lr: chosen}
+    P5: {trainset: trainsets/smolvlm_matched/Hard_N1200_s0.jsonl, lr: chosen}
+    P6: {trainset: trainsets/smolvlm_matched/Easy_N1200_s0.jsonl, lr: chosen}
+    P7: {trainset: trainsets/smolvlm_matched/Rand_N1200_s0.jsonl, lr: chosen}
