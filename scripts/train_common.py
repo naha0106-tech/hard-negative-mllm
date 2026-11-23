@@ -12,6 +12,12 @@ import math
 import os
 import platform
 import time
+import warnings
+
+# TensorFlow 로그·경고 끄기 (transformers가 TF를 쓰지 않게)
+os.environ.setdefault("USE_TF", "0")
+os.environ.setdefault("TF_CPP_MIN_LOG_LEVEL", "3")
+warnings.filterwarnings("ignore", message="Detected call of `lr_scheduler.step\\(\\)` before")
 
 import numpy as np
 import pandas as pd
@@ -33,8 +39,8 @@ def set_all_seeds(seed):
 def runs_dir(cfg):
     d = os.environ.get("HN_RUNS_DIR") or cfg["paths"]["runs_dir"]  # 환경변수로 바꿀 수 있음
     parent = os.path.dirname(d.rstrip("/"))
-    if d.startswith("/content/drive") and not os.path.isdir(parent):
-        raise SystemExit(f"[멈춤] {parent} 가 없습니다. 구글 드라이브를 먼저 연결하세요(drive.mount).")
+    if not os.path.isdir(parent):
+        raise SystemExit(f"[멈춤] {parent} 폴더가 없습니다. 저장 위치(HN_RUNS_DIR)를 확인하세요.")
     os.makedirs(d, exist_ok=True)
     return d
 
@@ -74,7 +80,7 @@ def pilot_run_id(key, spec, lr):
     """P1 + Rand_N400_s0 + 5e-5 -> pilot_P1_Rand_N400_lr5e-5 (파일럿 실행 가이드 5장 이름)."""
     cond, n = os.path.basename(spec["trainset"]).replace(".jsonl", "").split("_")[:2]
     rid = f"pilot_{key}_{cond}_{n}"
-    if key in ("P1", "P2", "P3"):
+    if key in ("P1", "P2", "P3", "P3K"):
         rid += f"_lr{lr_tag(lr)}"
     if key == "P7":
         rid += "_rep"

@@ -11,8 +11,10 @@ C8 기록·재시작   GPU·버전 기록, DONE 있으면 건너뛰는지
 
 결과: runs/pilot_P0_ZS/ (p0_checks.json, p0_samples.txt, val_preds_best.csv, run_config.json, summary.json, DONE)
 하나라도 실패하면 DONE을 만들지 않고 멈춥니다.
-실행: python scripts/04a_pilot_checks.py
+실행: python scripts/04a_pilot_checks.py                       (코랩, 완료)
+      python scripts/04a_pilot_checks.py --run_id pilot_P0K_ZS  (Kaggle)
 """
+import argparse
 import os
 import sys
 
@@ -22,7 +24,6 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from common import LETTERS, load_config  # noqa: E402
 import train_common as tc  # noqa: E402
 
-RUN_ID = "pilot_P0_ZS"
 LEN_SETS = ["trainsets/smolvlm_matched/Rand_N1200_s0.jsonl",
             "trainsets/smolvlm_matched/Hard_N1200_s0.jsonl",
             "trainsets/smolvlm_matched/Easy_N1200_s0.jsonl",
@@ -40,6 +41,9 @@ def pick_mask_examples(sets):
 
 
 def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--run_id", default="pilot_P0_ZS", help="Kaggle에서는 pilot_P0K_ZS")
+    RUN_ID = ap.parse_args().run_id
     cfg = load_config()
     pcfg, tcfg = cfg["pilot"], cfg["train"]
     out = os.path.join(tc.runs_dir(cfg), RUN_ID)

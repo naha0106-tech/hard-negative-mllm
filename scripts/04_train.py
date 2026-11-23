@@ -40,8 +40,18 @@ def batch_stream(n, micro, seed):
 
 
 def zs_reference(cfg, rdir):
-    p = os.path.join(rdir, "pilot_P0_ZS", "summary.json")
-    return load_json(p)["val_acc"] if os.path.exists(p) else cfg["pilot"]["zs_ref_acc"]
+    for rid in ("pilot_P0K_ZS", "pilot_P0_ZS"):  # Kaggle 점검값이 있으면 그것을 씀
+        p = os.path.join(rdir, rid, "summary.json")
+        if os.path.exists(p):
+            return load_json(p)["val_acc"]
+    return cfg["pilot"]["zs_ref_acc"]
+
+
+def write_log(path, rows):
+    with open(path, "w", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(["step", "loss", "lr", "val_acc", "elapsed_sec"])
+        w.writerows(rows)
 
 
 def train_once(args, cfg, attempt, log):
@@ -84,8 +94,7 @@ def train_once(args, cfg, attempt, log):
     tc.save_json(run_config, os.path.join(out, "run_config.json"))
 
     log_path = os.path.join(out, "train_log.csv")
-    with open(log_path, "w", newline="") as f:
-        csv.writer(f).writerow(["step", "loss", "lr", "val_acc", "elapsed_sec"])
+    log_rows = []  # 디스크에는 검증할 때만 씀 (느린 저장소 대비)
 
     stream = batch_stream(n, tcfg["micro_batch"], args.seed)
     elapsed = tc.timer()
@@ -127,15 +136,13 @@ def train_once(args, cfg, attempt, log):
             val_acc = float(preds.correct.mean())
             if val_acc > best["acc"]:  # 동점이면 이른 step 유지
                 best = {"acc": val_acc, "step": step, "preds": preds, "state": tc.lora_state(pm)}
-                no_improve = 0
-                pm.save_pretrained(os.path.join(out, "adapter"))
-                preds.to_csv(os.path.join(out, "val_preds_best.csv"), index=False)
+                no_improve = 0  # 최고 LoRA는 메모리에만 두고 끝에서 한 번 저장
             else:
                 no_improve += 1
             log(f"  step {step}/{max_steps}  loss {loss_sum:.4f}  val {val_acc:.4f}  best {best['acc']:.4f}@{best['step']}")
-        with open(log_path, "a", newline="") as f:
-            csv.writer(f).writerow([step, round(loss_sum, 6), sched.get_last_lr()[0], val_acc,
-                                    round(elapsed(), 1)])
+        log_rows.append([step, round(loss_sum, 6), sched.get_last_lr()[0], val_acc, round(elapsed(), 1)])
+        if val_acc != "":
+            write_log(log_path, log_rows)
         if val_acc != "" and no_improve >= tcfg["patience"]:
             stopped_early = True
             log(f"[조기 종료] {tcfg['patience']}번 연속 개선 없음 (step {step})")
@@ -146,9 +153,12 @@ def train_once(args, cfg, attempt, log):
         diverged = True
         log(f"[발산] 최고 검증 {best['acc']:.4f} < 무학습 {zs:.4f} - {tcfg['diverge_drop']}")
 
+    write_log(log_path, log_rows)
     gen = None
     if best["state"] is not None:
         pm.load_state_dict(best["state"], strict=False)  # 최고 체크포인트로 되돌림
+        pm.save_pretrained(os.path.join(out, "adapter"))
+        best["preds"].to_csv(os.path.join(out, "val_preds_best.csv"), index=False)
         gen = tc.generation_check(pm, processor, val, images, lids, tcfg["eval_batch"])
         tc.save_json(gen, os.path.join(out, "gen_check.json"))
         log(f"[B6] 글자로 답한 비율 {gen['letter_rate']:.3f}")
