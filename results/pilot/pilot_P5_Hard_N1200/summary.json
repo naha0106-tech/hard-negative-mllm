@@ -1,0 +1,15 @@
+{
+  "run_id": "pilot_P5_Hard_N1200",
+  "best_step": 200,
+  "best_val_acc": 0.792,
+  "final_step": 300,
+  "max_steps": 300,
+  "stopped_early": true,
+  "diverged": false,
+  "attempt": 1,
+  "letter_rate": 1.0,
+  "train_min": 28.93,
+  "eval_min": 29.52,
+  "n_evals": 12,
+  "total_min": 61.11
+}

@@ -1,0 +1,126 @@
+{
+  "letter_rate": 1.0,
+  "n": 500,
+  "examples": [
+    {
+      "item_id": "validation_00003",
+      "answer": "C",
+      "output": " C<end_of_utterance>",
+      "is_letter": true
+    },
+    {
+      "item_id": "validation_00007",
+      "answer": "B",
+      "output": " A<end_of_utterance>",
+      "is_letter": true
+    },
+    {
+      "item_id": "validation_00008",
+      "answer": "B",
+      "output": " A<end_of_utterance>",
+      "is_letter": true
+    },
+    {
+      "item_id": "validation_00013",
+      "answer": "B",
+      "output": " B<end_of_utterance>",
+      "is_letter": true
+    },
+    {
+      "item_id": "validation_00019",
+      "answer": "C",
+      "output": " C<end_of_utterance>",
+      "is_letter": true
+    },
+    {
+      "item_id": "validation_00056",
+      "answer": "B",
+      "output": " A<end_of_utterance>",
+      "is_letter": true
+    },
+    {
+      "item_id": "validation_00057",
+      "answer": "C",
+      "output": " C<end_of_utterance>",
+      "is_letter": true
+    },
+    {
+      "item_id": "validation_00066",
+      "answer": "B",
+      "output": " A<end_of_utterance>",
+      "is_letter": true
+    },
+    {
+      "item_id": "validation_00078",
+      "answer": "A",
+      "output": " A<end_of_utterance>",
+      "is_letter": true
+    },
+    {
+      "item_id": "validation_00085",
+      "answer": "E",
+      "output": " B<end_of_utterance>",
+      "is_letter": true
+    },
+    {
+      "item_id": "validation_00090",
+      "answer": "A",
+      "output": " A<end_of_utterance>",
+      "is_letter": true
+    },
+    {
+      "item_id": "validation_00098",
+      "answer": "A",
+      "output": " A<end_of_utterance>",
+      "is_letter": true
+    },
+    {
+      "item_id": "validation_00100",
+      "answer": "A",
+      "output": " B<end_of_utterance>",
+      "is_letter": true
+    },
+    {
+      "item_id": "validation_00107",
+      "answer": "B",
+      "output": " B<end_of_utterance>",
+      "is_letter": true
+    },
+    {
+      "item_id": "validation_00108",
+      "answer": "B",
+      "output": " B<end_of_utterance>",
+      "is_letter": true
+    },
+    {
+      "item_id": "validation_00109",
+      "answer": "A",
+      "output": " C<end_of_utterance>",
+      "is_letter": true
+    },
+    {
+      "item_id": "validation_00113",
+      "answer": "D",
+      "output": " D<end_of_utterance>",
+      "is_letter": true
+    },
+    {
+      "item_id": "validation_00125",
+      "answer": "A",
+      "output": " A<end_of_utterance>",
+      "is_letter": true
+    },
+    {
+      "item_id": "validation_00137",
+      "answer": "A",
+      "output": " B<end_of_utterance>",
+      "is_letter": true
+    },
+    {
+      "item_id": "validation_00151",
+      "answer": "C",
+      "output": " B<end_of_utterance>",
+      "is_letter": true
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "chosen_lr": 0.0002,
+  "rule": "최고값과 2문항 이내면 작은 학습률",
+  "candidates": [
+    {
+      "key": "P1",
+      "lr": 5e-05,
+      "best_val_acc": 0.74,
+      "best_step": 100,
+      "diverged": false
+    },
+    {
+      "key": "P2",
+      "lr": 0.0001,
+      "best_val_acc": 0.75,
+      "best_step": 75,
+      "diverged": false
+    },
+    {
+      "key": "P3",
+      "lr": 0.0002,
+      "best_val_acc": 0.766,
+      "best_step": 150,
+      "diverged": false
+    }
+  ]
+}
