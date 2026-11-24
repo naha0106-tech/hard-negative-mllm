@@ -1,0 +1,27 @@
+{
+  "session": "M1",
+  "account": "A",
+  "desc": "무학습 + 주 실험 시드 0, N 100·200·400·800",
+  "smoke": false,
+  "jobs": [
+    "smolvlm_ZS",
+    "smolvlm_main-Easy_N100_s0",
+    "smolvlm_main-Full_N100_s0",
+    "smolvlm_main-Hard_N100_s0",
+    "smolvlm_main-Rand_N100_s0",
+    "smolvlm_main-Full_N200_s0",
+    "smolvlm_main-Easy_N200_s0",
+    "smolvlm_main-Rand_N200_s0",
+    "smolvlm_main-Hard_N200_s0",
+    "smolvlm_main-Easy_N400_s0",
+    "smolvlm_main-Hard_N400_s0",
+    "smolvlm_main-Rand_N400_s0",
+    "smolvlm_main-Full_N400_s0",
+    "smolvlm_main-Easy_N800_s0",
+    "smolvlm_main-Hard_N800_s0",
+    "smolvlm_main-Rand_N800_s0",
+    "smolvlm_main-Full_N800_s0"
+  ],
+  "est_gpu_h": 15.4,
+  "est_wall_h": 7.7
+}
