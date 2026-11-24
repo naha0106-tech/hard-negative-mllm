@@ -1,0 +1,32 @@
+{
+  "session": "X2",
+  "account": "B",
+  "desc": "보조 시드 1 전부 + 보조 시드 2 N 100 + 보조 Full_N1200_s2",
+  "smoke": false,
+  "jobs": [
+    "smolvlm_aux-D1_N100_s1",
+    "smolvlm_aux-Rand_N100_s1",
+    "smolvlm_aux-D2_N100_s1",
+    "smolvlm_aux-D3_N100_s1",
+    "smolvlm_aux-D4_N100_s1",
+    "smolvlm_aux-Full_N100_s1",
+    "smolvlm_aux-D5_N100_s1",
+    "smolvlm_aux-D1_N100_s2",
+    "smolvlm_aux-D4_N100_s2",
+    "smolvlm_aux-Rand_N100_s2",
+    "smolvlm_aux-Full_N100_s2",
+    "smolvlm_aux-D5_N100_s2",
+    "smolvlm_aux-D2_N100_s2",
+    "smolvlm_aux-D3_N100_s2",
+    "smolvlm_aux-D1_N1200_s1",
+    "smolvlm_aux-D3_N1200_s1",
+    "smolvlm_aux-Full_N1200_s1",
+    "smolvlm_aux-D4_N1200_s1",
+    "smolvlm_aux-D2_N1200_s1",
+    "smolvlm_aux-Rand_N1200_s1",
+    "smolvlm_aux-D5_N1200_s1",
+    "smolvlm_aux-Full_N1200_s2"
+  ],
+  "est_gpu_h": 18.2,
+  "est_wall_h": 9.1
+}

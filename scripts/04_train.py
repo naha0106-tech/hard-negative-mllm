@@ -12,6 +12,8 @@
   python scripts/04_train.py --trainset trainsets/smolvlm_matched/Rand_N400_s0.jsonl \
       --run_id pilot_P1_Rand_N400_lr5e-5 --lr 5e-5 --seed 0
 이미 DONE이 있으면 아무것도 하지 않습니다. 끊겼던 run은 처음부터 다시 돕니다.
+--smoke: 스모크 테스트용 (config experiment.smoke: 10 step, 검증 50문항, 발산 판정 없음).
+학습 계산 자체는 파일럿과 같습니다.
 """
 import argparse
 import csv
@@ -55,7 +57,10 @@ def write_log(path, rows):
 
 
 def train_once(args, cfg, attempt, log):
-    tcfg = cfg["train"]
+    tcfg = dict(cfg["train"])
+    if args.smoke:
+        sm = cfg["experiment"]["smoke"]
+        tcfg["eval_every"] = sm["eval_every"]
     rdir = tc.runs_dir(cfg)
     out = os.path.join(rdir, args.run_id)
     if os.path.exists(out):
@@ -67,6 +72,9 @@ def train_once(args, cfg, attempt, log):
     val = tc.val500_records(items)
     n = len(train)
     max_steps = tc.max_steps_for(n, tcfg)
+    if args.smoke:
+        val = val[:cfg["experiment"]["smoke"]["val_limit"]]
+        max_steps = cfg["experiment"]["smoke"]["max_steps"]
     log(f"[데이터] 학습 {n}문항, val500 {len(val)}문항, 최대 step {max_steps}")
     images = tc.load_images(cfg, items, [r["item_id"] for r in train] + [r["item_id"] for r in val])
 
@@ -90,7 +98,8 @@ def train_once(args, cfg, attempt, log):
                   "seed": args.seed, "max_steps": max_steps, "warmup_steps": warmup,
                   "train_cfg": tcfg, "lora_report": lora_rep, "attempt": attempt,
                   "env": tc.env_info(cfg["models"]["smolvlm"]["id"], cfg["models"]["smolvlm"]["revision"]),
-                  "reused_from": None, "started": datetime.now().isoformat(timespec="seconds")}
+                  "reused_from": None, "smoke": bool(args.smoke), "git": tc.git_info(),
+                  "started": datetime.now().isoformat(timespec="seconds")}
     tc.save_json(run_config, os.path.join(out, "run_config.json"))
 
     log_path = os.path.join(out, "train_log.csv")
@@ -149,7 +158,7 @@ def train_once(args, cfg, attempt, log):
             break
 
     zs = zs_reference(cfg, rdir)
-    if not diverged and best["acc"] < zs - tcfg["diverge_drop"]:
+    if not diverged and not args.smoke and best["acc"] < zs - tcfg["diverge_drop"]:
         diverged = True
         log(f"[발산] 최고 검증 {best['acc']:.4f} < 무학습 {zs:.4f} - {tcfg['diverge_drop']}")
 
@@ -184,6 +193,7 @@ def main():
     ap.add_argument("--run_id", required=True)
     ap.add_argument("--lr", type=float, required=True)
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--smoke", action="store_true", help="스모크 테스트 (10 step, 검증 50문항)")
     args = ap.parse_args()
     cfg = load_config()
     rdir = tc.runs_dir(cfg)

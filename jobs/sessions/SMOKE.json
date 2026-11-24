@@ -1,0 +1,66 @@
+{
+  "session": "SMOKE",
+  "account": "A·B",
+  "desc": "스모크 테스트 (10 step, 세트별 50문항)",
+  "smoke": true,
+  "job_defs": [
+    {
+      "run_id": "smoke_ZS",
+      "kind": "zs",
+      "cond": "ZS",
+      "N": 0,
+      "seed": null,
+      "trainset": null,
+      "lr": null,
+      "eval_sets": [
+        "val",
+        "scienceqa",
+        "ai2d",
+        "pope"
+      ],
+      "perm": true,
+      "reuse_from": null,
+      "est_train_min": 0,
+      "est_eval_min": 8
+    },
+    {
+      "run_id": "smoke_main-Hard_N100_s0",
+      "kind": "main",
+      "cond": "Hard",
+      "N": 100,
+      "seed": 0,
+      "trainset": "trainsets/smolvlm_matched/Hard_N100_s0.jsonl",
+      "lr": 0.0002,
+      "eval_sets": [
+        "scienceqa",
+        "ai2d",
+        "pope"
+      ],
+      "perm": true,
+      "reuse_from": null,
+      "est_train_min": 6,
+      "est_eval_min": 6
+    },
+    {
+      "run_id": "smoke_aux-D3_N100_s0",
+      "kind": "aux",
+      "cond": "D3",
+      "N": 100,
+      "seed": 0,
+      "trainset": "trainsets/smolvlm/D3_N100_s0.jsonl",
+      "lr": 0.0002,
+      "eval_sets": [
+        "scienceqa"
+      ],
+      "perm": false,
+      "reuse_from": null,
+      "est_train_min": 6,
+      "est_eval_min": 3
+    }
+  ],
+  "jobs": [
+    "smoke_ZS",
+    "smoke_main-Hard_N100_s0",
+    "smoke_aux-D3_N100_s0"
+  ]
+}

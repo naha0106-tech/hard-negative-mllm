@@ -5,7 +5,8 @@
 - 채점 배치: 왼쪽 패딩 + 마지막 위치에서 " A"~" E" 로그확률 비교 (2단계와 같은 채점)
 - 이미지 미리 올리기, 환경 정보 기록
 
-이 파일은 test split을 절대 불러오지 않습니다.
+test split 이미지는 평가 코드(05_evaluate.py)가 allow_test=True로 부를 때만 불러옵니다.
+학습 코드(04_train.py)는 test를 절대 불러오지 않습니다.
 """
 import json
 import math
@@ -113,12 +114,13 @@ def val500_records(items):
     return recs
 
 
-def load_images(cfg, items, item_ids):
-    """필요한 이미지만 메모리에 올립니다. train / validation split만 사용합니다."""
+def load_images(cfg, items, item_ids, allow_test=False):
+    """필요한 이미지만 메모리에 올립니다. 학습은 train / validation만, test는 평가에서만."""
+    ok = ("train", "validation", "test") if allow_test else ("train", "validation")
     need = {}
     for iid in item_ids:
         split = items.loc[iid].split
-        if split not in ("train", "validation"):
+        if split not in ok:
             raise SystemExit(f"[멈춤] {iid}: {split} split은 4단계에서 쓰지 않습니다.")
         need.setdefault(split, []).append(iid)
     out = {}
@@ -271,6 +273,62 @@ def generation_check(model, processor, recs, images, lids, batch_size, n_example
                                  "output": processor.tokenizer.decode(row, skip_special_tokens=False),
                                  "is_letter": ok})
     return {"letter_rate": hit / len(recs), "n": len(recs), "examples": examples}
+
+
+# ------------------------------------------------------------------ 본실험 평가용
+def test_records(items):
+    """ScienceQA test 2,017문항: 원래 보기 K개, 원래 순서."""
+    t = items[items.split == "test"].sort_index()
+    return [{"item_id": iid, "question": r.question, "hint": r.hint, "options": list(r.choices),
+             "answer_letter": LETTERS[int(r.answer)], "K": int(r.K), "subject": r.subject,
+             "grade_band": r.grade_band} for iid, r in t.iterrows()]
+
+
+def chat_text_prompt(processor, prompt):
+    """이미지 1장 + 임의의 텍스트 프롬프트 (POPE용)."""
+    msgs = [{"role": "user", "content": [{"type": "image"}, {"type": "text", "text": prompt}]}]
+    return processor.apply_chat_template(msgs, add_generation_prompt=True)
+
+
+def single_token_id(tok, text):
+    t = tok.encode(text, add_special_tokens=False)
+    return t[0], len(t)
+
+
+def yes_no_ids(processor):
+    """POPE 채점용 토큰: " Yes"/"Yes", " No"/"No". 여러 토큰이면 첫 토큰을 씀(기록)."""
+    tok = processor.tokenizer
+    out, notes = {}, {}
+    for k in (" Yes", "Yes", " No", "No"):
+        out[k], n = single_token_id(tok, k)
+        notes[k] = {"id": out[k], "n_tokens": n}
+    assert len({out[" Yes"], out["Yes"]} & {out[" No"], out["No"]}) == 0, "Yes/No 토큰이 겹칩니다"
+    return out, notes
+
+
+@torch.no_grad()
+def score_tokens(model, processor, texts, images, token_ids, batch_size, autocast_dtype=torch.float16):
+    """마지막 위치 log-softmax에서 token_ids의 값만 뽑아 [문항 수, len(token_ids)] 배열로."""
+    model.eval()
+    idx = torch.tensor(token_ids)
+    out = []
+    for i in range(0, len(texts), batch_size):
+        enc = to_cuda(encode(processor, texts[i:i + batch_size], images[i:i + batch_size], "left"))
+        with torch.autocast("cuda", dtype=autocast_dtype):
+            logits = model(**enc).logits[:, -1, :]
+        lp = torch.log_softmax(logits.float(), dim=-1).cpu()
+        out.append(lp[:, idx].numpy())
+    return np.concatenate(out, 0) if out else np.zeros((0, len(token_ids)))
+
+
+def git_info():
+    import subprocess
+    def run(*a):
+        try:
+            return subprocess.run(["git", *a], cwd=ROOT, capture_output=True, text=True).stdout.strip() or None
+        except FileNotFoundError:
+            return None
+    return {"commit": run("rev-parse", "HEAD"), "describe": run("describe", "--tags", "--always")}
 
 
 def lora_state(pm):
