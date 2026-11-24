@@ -1,0 +1,22 @@
+{
+  "session": "M4",
+  "account": "B",
+  "desc": "주 실험 N 1,200 × 시드 0·1·2",
+  "smoke": false,
+  "jobs": [
+    "smolvlm_main-Hard_N1200_s0",
+    "smolvlm_main-Full_N1200_s0",
+    "smolvlm_main-Easy_N1200_s0",
+    "smolvlm_main-Rand_N1200_s0",
+    "smolvlm_main-Easy_N1200_s1",
+    "smolvlm_main-Rand_N1200_s1",
+    "smolvlm_main-Full_N1200_s1",
+    "smolvlm_main-Hard_N1200_s1",
+    "smolvlm_main-Easy_N1200_s2",
+    "smolvlm_main-Rand_N1200_s2",
+    "smolvlm_main-Hard_N1200_s2",
+    "smolvlm_main-Full_N1200_s2"
+  ],
+  "est_gpu_h": 19.8,
+  "est_wall_h": 9.9
+}

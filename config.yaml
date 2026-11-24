@@ -122,3 +122,46 @@ pilot:
     P5: {trainset: trainsets/smolvlm_matched/Hard_N1200_s0.jsonl, lr: chosen}
     P6: {trainset: trainsets/smolvlm_matched/Easy_N1200_s0.jsonl, lr: chosen}
     P7: {trainset: trainsets/smolvlm_matched/Rand_N1200_s0.jsonl, lr: chosen}
+
+# ============================================================
+# 5단계: 본실험 (본실험 실행 설계서). 사전 등록(prereg-v1) 뒤에는 바꾸지 않음
+# ============================================================
+experiment:
+  repo_url: https://github.com/naha0106-tech/hard-negative-mllm.git
+  branch: itkyoung0606-pilot-ing     # main에 합치지 않고 이 브랜치를 계속 씀
+  code_ref: prereg-v1                # 세션 노트북이 불러오는 태그 (스모크만 branch 사용)
+  expected_env:                      # 다르면 본 세션은 시작하지 않음 (스모크는 경고만)
+    torch: 2.11.0+cu130
+    transformers: 4.51.3
+    peft: 0.15.2
+    gpu: Tesla T4
+  pilot_env_torch: 2.11.0+cu130      # P3K를 돌린 torch. 지금 환경이 이것과 같을 때만 재사용
+  reuse:                             # 본실험 run_id: 파일럿 run 폴더 이름 (Input에서 찾음)
+    smolvlm_main-Rand_N400_s0: pilot_P3K_Rand_N400_lr2e-4
+  main:
+    trainset_dir: trainsets/smolvlm_matched
+    conditions: [Hard, Easy, Rand, Full]
+    sizes: [100, 200, 400, 800, 1200]
+    eval_sets: [scienceqa, ai2d, pope]
+    perm_sizes: [100, 1200]          # 순환 순열 정확도는 N 100·1,200과 무학습만
+  aux:
+    trainset_dir: trainsets/smolvlm
+    conditions: [Rand, D1, D2, D3, D4, D5, Full]
+    sizes: [100, 1200]
+    eval_sets: [scienceqa]
+  zs_eval_sets: [val, scienceqa, ai2d, pope]
+  ece_bins: 10
+  order_seed: 777                    # 같은 N 안에서 조건 순서를 섞는 시드
+  time_budget_h: 10.5                # 이 시간 안에 끝날 실행만 시작 (Kaggle 12시간 제한 대비)
+  start_margin: 1.2                  # 남은 시간 >= 예상 시간 x 1.2 일 때만 시작
+  est_min:                           # 실행 1개 예상 시간(분). 세션 안에서 실측으로 보정
+    train: {150: 29, 200: 39, 300: 58}
+    eval_full: 20                    # test + AI2D + POPE
+    eval_perm_extra: 21              # test 순환 순열 추가분
+    eval_test_only: 10               # 보조 실험 (test만)
+    eval_zs_val: 3                   # 무학습 val500
+  smoke:
+    max_steps: 10
+    eval_every: 5
+    val_limit: 50                    # 스모크 학습 중 검증 문항 수
+    eval_limit: 50                   # 스모크 평가 세트별 문항 수

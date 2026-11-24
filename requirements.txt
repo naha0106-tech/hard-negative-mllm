@@ -9,3 +9,7 @@ numpy
 pyarrow
 pyyaml
 pillow
+# 분석 (코랩 CPU: 07_collect.py, 06_analyze.py)
+statsmodels
+scipy
+matplotlib

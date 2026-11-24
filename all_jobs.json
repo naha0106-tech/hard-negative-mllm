@@ -1,0 +1,1876 @@
+[
+  {
+    "run_id": "smolvlm_ZS",
+    "kind": "zs",
+    "cond": "ZS",
+    "N": 0,
+    "seed": null,
+    "trainset": null,
+    "lr": null,
+    "eval_sets": [
+      "val",
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": true,
+    "reuse_from": null,
+    "est_train_min": 0,
+    "est_eval_min": 44,
+    "session": "M1"
+  },
+  {
+    "run_id": "smolvlm_main-Easy_N100_s0",
+    "kind": "main",
+    "cond": "Easy",
+    "N": 100,
+    "seed": 0,
+    "trainset": "trainsets/smolvlm_matched/Easy_N100_s0.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": true,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 41,
+    "session": "M1"
+  },
+  {
+    "run_id": "smolvlm_main-Full_N100_s0",
+    "kind": "main",
+    "cond": "Full",
+    "N": 100,
+    "seed": 0,
+    "trainset": "trainsets/smolvlm_matched/Full_N100_s0.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": true,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 41,
+    "session": "M1"
+  },
+  {
+    "run_id": "smolvlm_main-Hard_N100_s0",
+    "kind": "main",
+    "cond": "Hard",
+    "N": 100,
+    "seed": 0,
+    "trainset": "trainsets/smolvlm_matched/Hard_N100_s0.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": true,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 41,
+    "session": "M1"
+  },
+  {
+    "run_id": "smolvlm_main-Rand_N100_s0",
+    "kind": "main",
+    "cond": "Rand",
+    "N": 100,
+    "seed": 0,
+    "trainset": "trainsets/smolvlm_matched/Rand_N100_s0.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": true,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 41,
+    "session": "M1"
+  },
+  {
+    "run_id": "smolvlm_aux-D3_N100_s0",
+    "kind": "aux",
+    "cond": "D3",
+    "N": 100,
+    "seed": 0,
+    "trainset": "trainsets/smolvlm/D3_N100_s0.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 10,
+    "session": "X1"
+  },
+  {
+    "run_id": "smolvlm_aux-D4_N100_s0",
+    "kind": "aux",
+    "cond": "D4",
+    "N": 100,
+    "seed": 0,
+    "trainset": "trainsets/smolvlm/D4_N100_s0.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 10,
+    "session": "X1"
+  },
+  {
+    "run_id": "smolvlm_aux-Rand_N100_s0",
+    "kind": "aux",
+    "cond": "Rand",
+    "N": 100,
+    "seed": 0,
+    "trainset": "trainsets/smolvlm/Rand_N100_s0.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 10,
+    "session": "X1"
+  },
+  {
+    "run_id": "smolvlm_aux-D5_N100_s0",
+    "kind": "aux",
+    "cond": "D5",
+    "N": 100,
+    "seed": 0,
+    "trainset": "trainsets/smolvlm/D5_N100_s0.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 10,
+    "session": "X1"
+  },
+  {
+    "run_id": "smolvlm_aux-Full_N100_s0",
+    "kind": "aux",
+    "cond": "Full",
+    "N": 100,
+    "seed": 0,
+    "trainset": "trainsets/smolvlm/Full_N100_s0.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 10,
+    "session": "X1"
+  },
+  {
+    "run_id": "smolvlm_aux-D2_N100_s0",
+    "kind": "aux",
+    "cond": "D2",
+    "N": 100,
+    "seed": 0,
+    "trainset": "trainsets/smolvlm/D2_N100_s0.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 10,
+    "session": "X1"
+  },
+  {
+    "run_id": "smolvlm_aux-D1_N100_s0",
+    "kind": "aux",
+    "cond": "D1",
+    "N": 100,
+    "seed": 0,
+    "trainset": "trainsets/smolvlm/D1_N100_s0.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 10,
+    "session": "X1"
+  },
+  {
+    "run_id": "smolvlm_main-Hard_N100_s1",
+    "kind": "main",
+    "cond": "Hard",
+    "N": 100,
+    "seed": 1,
+    "trainset": "trainsets/smolvlm_matched/Hard_N100_s1.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": true,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 41,
+    "session": "M2"
+  },
+  {
+    "run_id": "smolvlm_main-Full_N100_s1",
+    "kind": "main",
+    "cond": "Full",
+    "N": 100,
+    "seed": 1,
+    "trainset": "trainsets/smolvlm_matched/Full_N100_s1.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": true,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 41,
+    "session": "M2"
+  },
+  {
+    "run_id": "smolvlm_main-Rand_N100_s1",
+    "kind": "main",
+    "cond": "Rand",
+    "N": 100,
+    "seed": 1,
+    "trainset": "trainsets/smolvlm_matched/Rand_N100_s1.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": true,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 41,
+    "session": "M2"
+  },
+  {
+    "run_id": "smolvlm_main-Easy_N100_s1",
+    "kind": "main",
+    "cond": "Easy",
+    "N": 100,
+    "seed": 1,
+    "trainset": "trainsets/smolvlm_matched/Easy_N100_s1.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": true,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 41,
+    "session": "M2"
+  },
+  {
+    "run_id": "smolvlm_aux-D1_N100_s1",
+    "kind": "aux",
+    "cond": "D1",
+    "N": 100,
+    "seed": 1,
+    "trainset": "trainsets/smolvlm/D1_N100_s1.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 10,
+    "session": "X2"
+  },
+  {
+    "run_id": "smolvlm_aux-Rand_N100_s1",
+    "kind": "aux",
+    "cond": "Rand",
+    "N": 100,
+    "seed": 1,
+    "trainset": "trainsets/smolvlm/Rand_N100_s1.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 10,
+    "session": "X2"
+  },
+  {
+    "run_id": "smolvlm_aux-D2_N100_s1",
+    "kind": "aux",
+    "cond": "D2",
+    "N": 100,
+    "seed": 1,
+    "trainset": "trainsets/smolvlm/D2_N100_s1.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 10,
+    "session": "X2"
+  },
+  {
+    "run_id": "smolvlm_aux-D3_N100_s1",
+    "kind": "aux",
+    "cond": "D3",
+    "N": 100,
+    "seed": 1,
+    "trainset": "trainsets/smolvlm/D3_N100_s1.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 10,
+    "session": "X2"
+  },
+  {
+    "run_id": "smolvlm_aux-D4_N100_s1",
+    "kind": "aux",
+    "cond": "D4",
+    "N": 100,
+    "seed": 1,
+    "trainset": "trainsets/smolvlm/D4_N100_s1.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 10,
+    "session": "X2"
+  },
+  {
+    "run_id": "smolvlm_aux-Full_N100_s1",
+    "kind": "aux",
+    "cond": "Full",
+    "N": 100,
+    "seed": 1,
+    "trainset": "trainsets/smolvlm/Full_N100_s1.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 10,
+    "session": "X2"
+  },
+  {
+    "run_id": "smolvlm_aux-D5_N100_s1",
+    "kind": "aux",
+    "cond": "D5",
+    "N": 100,
+    "seed": 1,
+    "trainset": "trainsets/smolvlm/D5_N100_s1.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 10,
+    "session": "X2"
+  },
+  {
+    "run_id": "smolvlm_main-Hard_N100_s2",
+    "kind": "main",
+    "cond": "Hard",
+    "N": 100,
+    "seed": 2,
+    "trainset": "trainsets/smolvlm_matched/Hard_N100_s2.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": true,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 41,
+    "session": "M3"
+  },
+  {
+    "run_id": "smolvlm_main-Rand_N100_s2",
+    "kind": "main",
+    "cond": "Rand",
+    "N": 100,
+    "seed": 2,
+    "trainset": "trainsets/smolvlm_matched/Rand_N100_s2.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": true,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 41,
+    "session": "M3"
+  },
+  {
+    "run_id": "smolvlm_main-Easy_N100_s2",
+    "kind": "main",
+    "cond": "Easy",
+    "N": 100,
+    "seed": 2,
+    "trainset": "trainsets/smolvlm_matched/Easy_N100_s2.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": true,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 41,
+    "session": "M3"
+  },
+  {
+    "run_id": "smolvlm_main-Full_N100_s2",
+    "kind": "main",
+    "cond": "Full",
+    "N": 100,
+    "seed": 2,
+    "trainset": "trainsets/smolvlm_matched/Full_N100_s2.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": true,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 41,
+    "session": "M3"
+  },
+  {
+    "run_id": "smolvlm_aux-D1_N100_s2",
+    "kind": "aux",
+    "cond": "D1",
+    "N": 100,
+    "seed": 2,
+    "trainset": "trainsets/smolvlm/D1_N100_s2.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 10,
+    "session": "X2"
+  },
+  {
+    "run_id": "smolvlm_aux-D4_N100_s2",
+    "kind": "aux",
+    "cond": "D4",
+    "N": 100,
+    "seed": 2,
+    "trainset": "trainsets/smolvlm/D4_N100_s2.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 10,
+    "session": "X2"
+  },
+  {
+    "run_id": "smolvlm_aux-Rand_N100_s2",
+    "kind": "aux",
+    "cond": "Rand",
+    "N": 100,
+    "seed": 2,
+    "trainset": "trainsets/smolvlm/Rand_N100_s2.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 10,
+    "session": "X2"
+  },
+  {
+    "run_id": "smolvlm_aux-Full_N100_s2",
+    "kind": "aux",
+    "cond": "Full",
+    "N": 100,
+    "seed": 2,
+    "trainset": "trainsets/smolvlm/Full_N100_s2.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 10,
+    "session": "X2"
+  },
+  {
+    "run_id": "smolvlm_aux-D5_N100_s2",
+    "kind": "aux",
+    "cond": "D5",
+    "N": 100,
+    "seed": 2,
+    "trainset": "trainsets/smolvlm/D5_N100_s2.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 10,
+    "session": "X2"
+  },
+  {
+    "run_id": "smolvlm_aux-D2_N100_s2",
+    "kind": "aux",
+    "cond": "D2",
+    "N": 100,
+    "seed": 2,
+    "trainset": "trainsets/smolvlm/D2_N100_s2.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 10,
+    "session": "X2"
+  },
+  {
+    "run_id": "smolvlm_aux-D3_N100_s2",
+    "kind": "aux",
+    "cond": "D3",
+    "N": 100,
+    "seed": 2,
+    "trainset": "trainsets/smolvlm/D3_N100_s2.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 10,
+    "session": "X2"
+  },
+  {
+    "run_id": "smolvlm_main-Full_N200_s0",
+    "kind": "main",
+    "cond": "Full",
+    "N": 200,
+    "seed": 0,
+    "trainset": "trainsets/smolvlm_matched/Full_N200_s0.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 20,
+    "session": "M1"
+  },
+  {
+    "run_id": "smolvlm_main-Easy_N200_s0",
+    "kind": "main",
+    "cond": "Easy",
+    "N": 200,
+    "seed": 0,
+    "trainset": "trainsets/smolvlm_matched/Easy_N200_s0.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 20,
+    "session": "M1"
+  },
+  {
+    "run_id": "smolvlm_main-Rand_N200_s0",
+    "kind": "main",
+    "cond": "Rand",
+    "N": 200,
+    "seed": 0,
+    "trainset": "trainsets/smolvlm_matched/Rand_N200_s0.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 20,
+    "session": "M1"
+  },
+  {
+    "run_id": "smolvlm_main-Hard_N200_s0",
+    "kind": "main",
+    "cond": "Hard",
+    "N": 200,
+    "seed": 0,
+    "trainset": "trainsets/smolvlm_matched/Hard_N200_s0.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 20,
+    "session": "M1"
+  },
+  {
+    "run_id": "smolvlm_main-Rand_N200_s1",
+    "kind": "main",
+    "cond": "Rand",
+    "N": 200,
+    "seed": 1,
+    "trainset": "trainsets/smolvlm_matched/Rand_N200_s1.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 20,
+    "session": "M2"
+  },
+  {
+    "run_id": "smolvlm_main-Full_N200_s1",
+    "kind": "main",
+    "cond": "Full",
+    "N": 200,
+    "seed": 1,
+    "trainset": "trainsets/smolvlm_matched/Full_N200_s1.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 20,
+    "session": "M2"
+  },
+  {
+    "run_id": "smolvlm_main-Easy_N200_s1",
+    "kind": "main",
+    "cond": "Easy",
+    "N": 200,
+    "seed": 1,
+    "trainset": "trainsets/smolvlm_matched/Easy_N200_s1.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 20,
+    "session": "M2"
+  },
+  {
+    "run_id": "smolvlm_main-Hard_N200_s1",
+    "kind": "main",
+    "cond": "Hard",
+    "N": 200,
+    "seed": 1,
+    "trainset": "trainsets/smolvlm_matched/Hard_N200_s1.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 20,
+    "session": "M2"
+  },
+  {
+    "run_id": "smolvlm_main-Rand_N200_s2",
+    "kind": "main",
+    "cond": "Rand",
+    "N": 200,
+    "seed": 2,
+    "trainset": "trainsets/smolvlm_matched/Rand_N200_s2.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 20,
+    "session": "M3"
+  },
+  {
+    "run_id": "smolvlm_main-Full_N200_s2",
+    "kind": "main",
+    "cond": "Full",
+    "N": 200,
+    "seed": 2,
+    "trainset": "trainsets/smolvlm_matched/Full_N200_s2.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 20,
+    "session": "M3"
+  },
+  {
+    "run_id": "smolvlm_main-Easy_N200_s2",
+    "kind": "main",
+    "cond": "Easy",
+    "N": 200,
+    "seed": 2,
+    "trainset": "trainsets/smolvlm_matched/Easy_N200_s2.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 20,
+    "session": "M3"
+  },
+  {
+    "run_id": "smolvlm_main-Hard_N200_s2",
+    "kind": "main",
+    "cond": "Hard",
+    "N": 200,
+    "seed": 2,
+    "trainset": "trainsets/smolvlm_matched/Hard_N200_s2.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 20,
+    "session": "M3"
+  },
+  {
+    "run_id": "smolvlm_main-Easy_N400_s0",
+    "kind": "main",
+    "cond": "Easy",
+    "N": 400,
+    "seed": 0,
+    "trainset": "trainsets/smolvlm_matched/Easy_N400_s0.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 20,
+    "session": "M1"
+  },
+  {
+    "run_id": "smolvlm_main-Hard_N400_s0",
+    "kind": "main",
+    "cond": "Hard",
+    "N": 400,
+    "seed": 0,
+    "trainset": "trainsets/smolvlm_matched/Hard_N400_s0.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 20,
+    "session": "M1"
+  },
+  {
+    "run_id": "smolvlm_main-Rand_N400_s0",
+    "kind": "main",
+    "cond": "Rand",
+    "N": 400,
+    "seed": 0,
+    "trainset": "trainsets/smolvlm_matched/Rand_N400_s0.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": false,
+    "reuse_from": "pilot_P3K_Rand_N400_lr2e-4",
+    "est_train_min": 29,
+    "est_eval_min": 20,
+    "session": "M1"
+  },
+  {
+    "run_id": "smolvlm_main-Full_N400_s0",
+    "kind": "main",
+    "cond": "Full",
+    "N": 400,
+    "seed": 0,
+    "trainset": "trainsets/smolvlm_matched/Full_N400_s0.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 20,
+    "session": "M1"
+  },
+  {
+    "run_id": "smolvlm_main-Full_N400_s1",
+    "kind": "main",
+    "cond": "Full",
+    "N": 400,
+    "seed": 1,
+    "trainset": "trainsets/smolvlm_matched/Full_N400_s1.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 20,
+    "session": "M2"
+  },
+  {
+    "run_id": "smolvlm_main-Hard_N400_s1",
+    "kind": "main",
+    "cond": "Hard",
+    "N": 400,
+    "seed": 1,
+    "trainset": "trainsets/smolvlm_matched/Hard_N400_s1.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 20,
+    "session": "M2"
+  },
+  {
+    "run_id": "smolvlm_main-Rand_N400_s1",
+    "kind": "main",
+    "cond": "Rand",
+    "N": 400,
+    "seed": 1,
+    "trainset": "trainsets/smolvlm_matched/Rand_N400_s1.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 20,
+    "session": "M2"
+  },
+  {
+    "run_id": "smolvlm_main-Easy_N400_s1",
+    "kind": "main",
+    "cond": "Easy",
+    "N": 400,
+    "seed": 1,
+    "trainset": "trainsets/smolvlm_matched/Easy_N400_s1.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 20,
+    "session": "M2"
+  },
+  {
+    "run_id": "smolvlm_main-Hard_N400_s2",
+    "kind": "main",
+    "cond": "Hard",
+    "N": 400,
+    "seed": 2,
+    "trainset": "trainsets/smolvlm_matched/Hard_N400_s2.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 20,
+    "session": "M3"
+  },
+  {
+    "run_id": "smolvlm_main-Rand_N400_s2",
+    "kind": "main",
+    "cond": "Rand",
+    "N": 400,
+    "seed": 2,
+    "trainset": "trainsets/smolvlm_matched/Rand_N400_s2.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 20,
+    "session": "M3"
+  },
+  {
+    "run_id": "smolvlm_main-Easy_N400_s2",
+    "kind": "main",
+    "cond": "Easy",
+    "N": 400,
+    "seed": 2,
+    "trainset": "trainsets/smolvlm_matched/Easy_N400_s2.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 20,
+    "session": "M3"
+  },
+  {
+    "run_id": "smolvlm_main-Full_N400_s2",
+    "kind": "main",
+    "cond": "Full",
+    "N": 400,
+    "seed": 2,
+    "trainset": "trainsets/smolvlm_matched/Full_N400_s2.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 29,
+    "est_eval_min": 20,
+    "session": "M3"
+  },
+  {
+    "run_id": "smolvlm_main-Easy_N800_s0",
+    "kind": "main",
+    "cond": "Easy",
+    "N": 800,
+    "seed": 0,
+    "trainset": "trainsets/smolvlm_matched/Easy_N800_s0.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 39,
+    "est_eval_min": 20,
+    "session": "M1"
+  },
+  {
+    "run_id": "smolvlm_main-Hard_N800_s0",
+    "kind": "main",
+    "cond": "Hard",
+    "N": 800,
+    "seed": 0,
+    "trainset": "trainsets/smolvlm_matched/Hard_N800_s0.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 39,
+    "est_eval_min": 20,
+    "session": "M1"
+  },
+  {
+    "run_id": "smolvlm_main-Rand_N800_s0",
+    "kind": "main",
+    "cond": "Rand",
+    "N": 800,
+    "seed": 0,
+    "trainset": "trainsets/smolvlm_matched/Rand_N800_s0.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 39,
+    "est_eval_min": 20,
+    "session": "M1"
+  },
+  {
+    "run_id": "smolvlm_main-Full_N800_s0",
+    "kind": "main",
+    "cond": "Full",
+    "N": 800,
+    "seed": 0,
+    "trainset": "trainsets/smolvlm_matched/Full_N800_s0.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 39,
+    "est_eval_min": 20,
+    "session": "M1"
+  },
+  {
+    "run_id": "smolvlm_main-Full_N800_s1",
+    "kind": "main",
+    "cond": "Full",
+    "N": 800,
+    "seed": 1,
+    "trainset": "trainsets/smolvlm_matched/Full_N800_s1.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 39,
+    "est_eval_min": 20,
+    "session": "M2"
+  },
+  {
+    "run_id": "smolvlm_main-Rand_N800_s1",
+    "kind": "main",
+    "cond": "Rand",
+    "N": 800,
+    "seed": 1,
+    "trainset": "trainsets/smolvlm_matched/Rand_N800_s1.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 39,
+    "est_eval_min": 20,
+    "session": "M2"
+  },
+  {
+    "run_id": "smolvlm_main-Easy_N800_s1",
+    "kind": "main",
+    "cond": "Easy",
+    "N": 800,
+    "seed": 1,
+    "trainset": "trainsets/smolvlm_matched/Easy_N800_s1.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 39,
+    "est_eval_min": 20,
+    "session": "M2"
+  },
+  {
+    "run_id": "smolvlm_main-Hard_N800_s1",
+    "kind": "main",
+    "cond": "Hard",
+    "N": 800,
+    "seed": 1,
+    "trainset": "trainsets/smolvlm_matched/Hard_N800_s1.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 39,
+    "est_eval_min": 20,
+    "session": "M2"
+  },
+  {
+    "run_id": "smolvlm_main-Hard_N800_s2",
+    "kind": "main",
+    "cond": "Hard",
+    "N": 800,
+    "seed": 2,
+    "trainset": "trainsets/smolvlm_matched/Hard_N800_s2.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 39,
+    "est_eval_min": 20,
+    "session": "M3"
+  },
+  {
+    "run_id": "smolvlm_main-Full_N800_s2",
+    "kind": "main",
+    "cond": "Full",
+    "N": 800,
+    "seed": 2,
+    "trainset": "trainsets/smolvlm_matched/Full_N800_s2.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 39,
+    "est_eval_min": 20,
+    "session": "M3"
+  },
+  {
+    "run_id": "smolvlm_main-Easy_N800_s2",
+    "kind": "main",
+    "cond": "Easy",
+    "N": 800,
+    "seed": 2,
+    "trainset": "trainsets/smolvlm_matched/Easy_N800_s2.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 39,
+    "est_eval_min": 20,
+    "session": "M3"
+  },
+  {
+    "run_id": "smolvlm_main-Rand_N800_s2",
+    "kind": "main",
+    "cond": "Rand",
+    "N": 800,
+    "seed": 2,
+    "trainset": "trainsets/smolvlm_matched/Rand_N800_s2.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 39,
+    "est_eval_min": 20,
+    "session": "M3"
+  },
+  {
+    "run_id": "smolvlm_main-Hard_N1200_s0",
+    "kind": "main",
+    "cond": "Hard",
+    "N": 1200,
+    "seed": 0,
+    "trainset": "trainsets/smolvlm_matched/Hard_N1200_s0.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": true,
+    "reuse_from": null,
+    "est_train_min": 58,
+    "est_eval_min": 41,
+    "session": "M4"
+  },
+  {
+    "run_id": "smolvlm_main-Full_N1200_s0",
+    "kind": "main",
+    "cond": "Full",
+    "N": 1200,
+    "seed": 0,
+    "trainset": "trainsets/smolvlm_matched/Full_N1200_s0.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": true,
+    "reuse_from": null,
+    "est_train_min": 58,
+    "est_eval_min": 41,
+    "session": "M4"
+  },
+  {
+    "run_id": "smolvlm_main-Easy_N1200_s0",
+    "kind": "main",
+    "cond": "Easy",
+    "N": 1200,
+    "seed": 0,
+    "trainset": "trainsets/smolvlm_matched/Easy_N1200_s0.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": true,
+    "reuse_from": null,
+    "est_train_min": 58,
+    "est_eval_min": 41,
+    "session": "M4"
+  },
+  {
+    "run_id": "smolvlm_main-Rand_N1200_s0",
+    "kind": "main",
+    "cond": "Rand",
+    "N": 1200,
+    "seed": 0,
+    "trainset": "trainsets/smolvlm_matched/Rand_N1200_s0.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": true,
+    "reuse_from": null,
+    "est_train_min": 58,
+    "est_eval_min": 41,
+    "session": "M4"
+  },
+  {
+    "run_id": "smolvlm_aux-D4_N1200_s0",
+    "kind": "aux",
+    "cond": "D4",
+    "N": 1200,
+    "seed": 0,
+    "trainset": "trainsets/smolvlm/D4_N1200_s0.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 58,
+    "est_eval_min": 10,
+    "session": "X1"
+  },
+  {
+    "run_id": "smolvlm_aux-D3_N1200_s0",
+    "kind": "aux",
+    "cond": "D3",
+    "N": 1200,
+    "seed": 0,
+    "trainset": "trainsets/smolvlm/D3_N1200_s0.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 58,
+    "est_eval_min": 10,
+    "session": "X1"
+  },
+  {
+    "run_id": "smolvlm_aux-D1_N1200_s0",
+    "kind": "aux",
+    "cond": "D1",
+    "N": 1200,
+    "seed": 0,
+    "trainset": "trainsets/smolvlm/D1_N1200_s0.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 58,
+    "est_eval_min": 10,
+    "session": "X1"
+  },
+  {
+    "run_id": "smolvlm_aux-Full_N1200_s0",
+    "kind": "aux",
+    "cond": "Full",
+    "N": 1200,
+    "seed": 0,
+    "trainset": "trainsets/smolvlm/Full_N1200_s0.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 58,
+    "est_eval_min": 10,
+    "session": "X1"
+  },
+  {
+    "run_id": "smolvlm_aux-D2_N1200_s0",
+    "kind": "aux",
+    "cond": "D2",
+    "N": 1200,
+    "seed": 0,
+    "trainset": "trainsets/smolvlm/D2_N1200_s0.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 58,
+    "est_eval_min": 10,
+    "session": "X1"
+  },
+  {
+    "run_id": "smolvlm_aux-Rand_N1200_s0",
+    "kind": "aux",
+    "cond": "Rand",
+    "N": 1200,
+    "seed": 0,
+    "trainset": "trainsets/smolvlm/Rand_N1200_s0.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 58,
+    "est_eval_min": 10,
+    "session": "X1"
+  },
+  {
+    "run_id": "smolvlm_aux-D5_N1200_s0",
+    "kind": "aux",
+    "cond": "D5",
+    "N": 1200,
+    "seed": 0,
+    "trainset": "trainsets/smolvlm/D5_N1200_s0.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 58,
+    "est_eval_min": 10,
+    "session": "X1"
+  },
+  {
+    "run_id": "smolvlm_main-Easy_N1200_s1",
+    "kind": "main",
+    "cond": "Easy",
+    "N": 1200,
+    "seed": 1,
+    "trainset": "trainsets/smolvlm_matched/Easy_N1200_s1.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": true,
+    "reuse_from": null,
+    "est_train_min": 58,
+    "est_eval_min": 41,
+    "session": "M4"
+  },
+  {
+    "run_id": "smolvlm_main-Rand_N1200_s1",
+    "kind": "main",
+    "cond": "Rand",
+    "N": 1200,
+    "seed": 1,
+    "trainset": "trainsets/smolvlm_matched/Rand_N1200_s1.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": true,
+    "reuse_from": null,
+    "est_train_min": 58,
+    "est_eval_min": 41,
+    "session": "M4"
+  },
+  {
+    "run_id": "smolvlm_main-Full_N1200_s1",
+    "kind": "main",
+    "cond": "Full",
+    "N": 1200,
+    "seed": 1,
+    "trainset": "trainsets/smolvlm_matched/Full_N1200_s1.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": true,
+    "reuse_from": null,
+    "est_train_min": 58,
+    "est_eval_min": 41,
+    "session": "M4"
+  },
+  {
+    "run_id": "smolvlm_main-Hard_N1200_s1",
+    "kind": "main",
+    "cond": "Hard",
+    "N": 1200,
+    "seed": 1,
+    "trainset": "trainsets/smolvlm_matched/Hard_N1200_s1.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": true,
+    "reuse_from": null,
+    "est_train_min": 58,
+    "est_eval_min": 41,
+    "session": "M4"
+  },
+  {
+    "run_id": "smolvlm_aux-D1_N1200_s1",
+    "kind": "aux",
+    "cond": "D1",
+    "N": 1200,
+    "seed": 1,
+    "trainset": "trainsets/smolvlm/D1_N1200_s1.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 58,
+    "est_eval_min": 10,
+    "session": "X2"
+  },
+  {
+    "run_id": "smolvlm_aux-D3_N1200_s1",
+    "kind": "aux",
+    "cond": "D3",
+    "N": 1200,
+    "seed": 1,
+    "trainset": "trainsets/smolvlm/D3_N1200_s1.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 58,
+    "est_eval_min": 10,
+    "session": "X2"
+  },
+  {
+    "run_id": "smolvlm_aux-Full_N1200_s1",
+    "kind": "aux",
+    "cond": "Full",
+    "N": 1200,
+    "seed": 1,
+    "trainset": "trainsets/smolvlm/Full_N1200_s1.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 58,
+    "est_eval_min": 10,
+    "session": "X2"
+  },
+  {
+    "run_id": "smolvlm_aux-D4_N1200_s1",
+    "kind": "aux",
+    "cond": "D4",
+    "N": 1200,
+    "seed": 1,
+    "trainset": "trainsets/smolvlm/D4_N1200_s1.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 58,
+    "est_eval_min": 10,
+    "session": "X2"
+  },
+  {
+    "run_id": "smolvlm_aux-D2_N1200_s1",
+    "kind": "aux",
+    "cond": "D2",
+    "N": 1200,
+    "seed": 1,
+    "trainset": "trainsets/smolvlm/D2_N1200_s1.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 58,
+    "est_eval_min": 10,
+    "session": "X2"
+  },
+  {
+    "run_id": "smolvlm_aux-Rand_N1200_s1",
+    "kind": "aux",
+    "cond": "Rand",
+    "N": 1200,
+    "seed": 1,
+    "trainset": "trainsets/smolvlm/Rand_N1200_s1.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 58,
+    "est_eval_min": 10,
+    "session": "X2"
+  },
+  {
+    "run_id": "smolvlm_aux-D5_N1200_s1",
+    "kind": "aux",
+    "cond": "D5",
+    "N": 1200,
+    "seed": 1,
+    "trainset": "trainsets/smolvlm/D5_N1200_s1.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 58,
+    "est_eval_min": 10,
+    "session": "X2"
+  },
+  {
+    "run_id": "smolvlm_main-Easy_N1200_s2",
+    "kind": "main",
+    "cond": "Easy",
+    "N": 1200,
+    "seed": 2,
+    "trainset": "trainsets/smolvlm_matched/Easy_N1200_s2.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": true,
+    "reuse_from": null,
+    "est_train_min": 58,
+    "est_eval_min": 41,
+    "session": "M4"
+  },
+  {
+    "run_id": "smolvlm_main-Rand_N1200_s2",
+    "kind": "main",
+    "cond": "Rand",
+    "N": 1200,
+    "seed": 2,
+    "trainset": "trainsets/smolvlm_matched/Rand_N1200_s2.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": true,
+    "reuse_from": null,
+    "est_train_min": 58,
+    "est_eval_min": 41,
+    "session": "M4"
+  },
+  {
+    "run_id": "smolvlm_main-Hard_N1200_s2",
+    "kind": "main",
+    "cond": "Hard",
+    "N": 1200,
+    "seed": 2,
+    "trainset": "trainsets/smolvlm_matched/Hard_N1200_s2.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": true,
+    "reuse_from": null,
+    "est_train_min": 58,
+    "est_eval_min": 41,
+    "session": "M4"
+  },
+  {
+    "run_id": "smolvlm_main-Full_N1200_s2",
+    "kind": "main",
+    "cond": "Full",
+    "N": 1200,
+    "seed": 2,
+    "trainset": "trainsets/smolvlm_matched/Full_N1200_s2.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa",
+      "ai2d",
+      "pope"
+    ],
+    "perm": true,
+    "reuse_from": null,
+    "est_train_min": 58,
+    "est_eval_min": 41,
+    "session": "M4"
+  },
+  {
+    "run_id": "smolvlm_aux-Full_N1200_s2",
+    "kind": "aux",
+    "cond": "Full",
+    "N": 1200,
+    "seed": 2,
+    "trainset": "trainsets/smolvlm/Full_N1200_s2.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 58,
+    "est_eval_min": 10,
+    "session": "X2"
+  },
+  {
+    "run_id": "smolvlm_aux-D3_N1200_s2",
+    "kind": "aux",
+    "cond": "D3",
+    "N": 1200,
+    "seed": 2,
+    "trainset": "trainsets/smolvlm/D3_N1200_s2.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 58,
+    "est_eval_min": 10,
+    "session": "X1"
+  },
+  {
+    "run_id": "smolvlm_aux-D5_N1200_s2",
+    "kind": "aux",
+    "cond": "D5",
+    "N": 1200,
+    "seed": 2,
+    "trainset": "trainsets/smolvlm/D5_N1200_s2.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 58,
+    "est_eval_min": 10,
+    "session": "X1"
+  },
+  {
+    "run_id": "smolvlm_aux-D4_N1200_s2",
+    "kind": "aux",
+    "cond": "D4",
+    "N": 1200,
+    "seed": 2,
+    "trainset": "trainsets/smolvlm/D4_N1200_s2.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 58,
+    "est_eval_min": 10,
+    "session": "X1"
+  },
+  {
+    "run_id": "smolvlm_aux-Rand_N1200_s2",
+    "kind": "aux",
+    "cond": "Rand",
+    "N": 1200,
+    "seed": 2,
+    "trainset": "trainsets/smolvlm/Rand_N1200_s2.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 58,
+    "est_eval_min": 10,
+    "session": "X1"
+  },
+  {
+    "run_id": "smolvlm_aux-D2_N1200_s2",
+    "kind": "aux",
+    "cond": "D2",
+    "N": 1200,
+    "seed": 2,
+    "trainset": "trainsets/smolvlm/D2_N1200_s2.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 58,
+    "est_eval_min": 10,
+    "session": "X1"
+  },
+  {
+    "run_id": "smolvlm_aux-D1_N1200_s2",
+    "kind": "aux",
+    "cond": "D1",
+    "N": 1200,
+    "seed": 2,
+    "trainset": "trainsets/smolvlm/D1_N1200_s2.jsonl",
+    "lr": 0.0002,
+    "eval_sets": [
+      "scienceqa"
+    ],
+    "perm": false,
+    "reuse_from": null,
+    "est_train_min": 58,
+    "est_eval_min": 10,
+    "session": "X1"
+  }
+]
