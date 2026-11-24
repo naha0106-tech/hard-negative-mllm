@@ -1,0 +1,122 @@
+{
+  "B1": {
+    "pass": true,
+    "P4_best": 0.804,
+    "ZS": 0.64,
+    "gain": 0.164,
+    "기준": ">= +0.02"
+  },
+  "B2": {
+    "chosen_lr": 0.0002,
+    "rule": "최고값과 2문항 이내면 작은 학습률",
+    "candidates": [
+      {
+        "key": "P1",
+        "lr": 5e-05,
+        "best_val_acc": 0.74,
+        "best_step": 100,
+        "diverged": false
+      },
+      {
+        "key": "P2",
+        "lr": 0.0001,
+        "best_val_acc": 0.75,
+        "best_step": 75,
+        "diverged": false
+      },
+      {
+        "key": "P3",
+        "lr": 0.0002,
+        "best_val_acc": 0.766,
+        "best_step": 150,
+        "diverged": false
+      }
+    ]
+  },
+  "B3": {
+    "pass": null,
+    "estimate": {
+      "min_per_step": 0.0952,
+      "min_per_val500": 2.451,
+      "T150_min": 29.0,
+      "T200_min": 38.7,
+      "T300_min": 58.0,
+      "Te_min": 19.6,
+      "main_train_h": 36.7,
+      "aux_train_h": 30.4,
+      "eval_h": 33.7,
+      "reused_h": 3.4,
+      "total_h_if_reused": 97.4,
+      "total_h_no_reuse": 100.8,
+      "n_gpu_parallel": 2,
+      "wall_h_parallel": 48.7
+    },
+    "기준": "가용 GPU 시간과 비교해 사람이 판단 (넘치면 Qwen 생략 → 보조 실험 시드 3→2)"
+  },
+  "B4": {
+    "pass": true,
+    "Hard_vs_Easy": {
+      "disagree_rate": 0.174,
+      "acc_a": 0.792,
+      "acc_b": 0.752,
+      "only_a_correct": 45,
+      "only_b_correct": 25
+    },
+    "repeat_P4_vs_P7_disagree": 0.016,
+    "detectable_diff_pp": 2.6,
+    "기준": "d >= 0.05 그리고 d >= 2 x 반복 불일치율"
+  },
+  "B5": {
+    "pass": true,
+    "acc_diff": 0.008,
+    "disagree_rate": 0.016,
+    "warn": false,
+    "기준": "기록만 (1%p 넘으면 보고서에 명시)"
+  },
+  "B6": {
+    "pass": true,
+    "letter_rate": {
+      "P1": 1.0,
+      "P2": 1.0,
+      "P3": 1.0,
+      "P3K": 1.0,
+      "P4": 1.0,
+      "P5": 1.0,
+      "P6": 1.0,
+      "P7": 1.0
+    },
+    "기준": "모두 >= 0.95"
+  },
+  "platform_check": {
+    "colab": "pilot_P3_Rand_N400_lr2e-4",
+    "kaggle": "pilot_P3K_Rand_N400_lr2e-4",
+    "colab_acc": 0.766,
+    "kaggle_acc": 0.766,
+    "acc_diff": 0.0,
+    "disagree_rate": 0.01,
+    "warn": false
+  },
+  "zs_run": "pilot_P0K_ZS",
+  "diverged_runs": {},
+  "run_ids": {
+    "P1": "pilot_P1_Rand_N400_lr5e-5",
+    "P2": "pilot_P2_Rand_N400_lr1e-4",
+    "P3": "pilot_P3_Rand_N400_lr2e-4",
+    "P3K": "pilot_P3K_Rand_N400_lr2e-4",
+    "P4": "pilot_P4_Rand_N1200",
+    "P5": "pilot_P5_Hard_N1200",
+    "P6": "pilot_P6_Easy_N1200",
+    "P7": "pilot_P7_Rand_N1200_rep"
+  },
+  "decisions": {
+    "learning_rate": 0.0002,
+    "main_trainset": "기존 smolvlm_matched 유지",
+    "reuse_as_main": {
+      "pilot_P3K_Rand_N400_lr2e-4": "smolvlm_main-Rand_N400_s0",
+      "pilot_P4_Rand_N1200": "smolvlm_main-Rand_N1200_s0",
+      "pilot_P5_Hard_N1200": "smolvlm_main-Hard_N1200_s0",
+      "pilot_P6_Easy_N1200": "smolvlm_main-Easy_N1200_s0"
+    },
+    "go_to_main": true
+  }
+}

@@ -1,0 +1,10 @@
+===== pilot_P3K_Rand_N400_lr2e-4 (lr=0.0002, seed=0) =====
+[데이터] 학습 400문항, val500 500문항, 최대 step 150
+  step 25/150  loss 0.1543  val 0.7460  best 0.7460@25
+  step 50/150  loss 0.1080  val 0.7240  best 0.7460@25
+  step 75/150  loss 0.1217  val 0.7460  best 0.7460@25
+  step 100/150  loss 0.0435  val 0.7500  best 0.7500@100
+  step 125/150  loss 0.0457  val 0.7660  best 0.7660@125
+  step 150/150  loss 0.0197  val 0.7660  best 0.7660@125
+[B6] 글자로 답한 비율 1.000
+===== 끝: best val 0.7660 @ step 125, 총 30.73분 =====

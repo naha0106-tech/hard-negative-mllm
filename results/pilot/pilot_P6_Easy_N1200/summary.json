@@ -1,0 +1,15 @@
+{
+  "run_id": "pilot_P6_Easy_N1200",
+  "best_step": 175,
+  "best_val_acc": 0.752,
+  "final_step": 275,
+  "max_steps": 300,
+  "stopped_early": true,
+  "diverged": false,
+  "attempt": 1,
+  "letter_rate": 1.0,
+  "train_min": 26.34,
+  "eval_min": 27.09,
+  "n_evals": 11,
+  "total_min": 56.16
+}

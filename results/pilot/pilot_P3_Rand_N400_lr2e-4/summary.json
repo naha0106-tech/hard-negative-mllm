@@ -1,0 +1,15 @@
+{
+  "run_id": "pilot_P3_Rand_N400_lr2e-4",
+  "best_step": 150,
+  "best_val_acc": 0.766,
+  "final_step": 150,
+  "max_steps": 150,
+  "stopped_early": false,
+  "diverged": false,
+  "attempt": 1,
+  "letter_rate": 1.0,
+  "train_min": 14.14,
+  "eval_min": 14.46,
+  "n_evals": 6,
+  "total_min": 31.2
+}

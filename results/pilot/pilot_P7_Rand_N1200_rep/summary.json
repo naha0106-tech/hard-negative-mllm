@@ -1,0 +1,15 @@
+{
+  "run_id": "pilot_P7_Rand_N1200_rep",
+  "best_step": 200,
+  "best_val_acc": 0.796,
+  "final_step": 300,
+  "max_steps": 300,
+  "stopped_early": true,
+  "diverged": false,
+  "attempt": 1,
+  "letter_rate": 1.0,
+  "train_min": 28.87,
+  "eval_min": 29.89,
+  "n_evals": 12,
+  "total_min": 61.41
+}

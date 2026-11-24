@@ -1,0 +1,11 @@
+run,run_id,val_acc,val_acc_with_lora_init,letter_rate_first20,max_tokens,best_step,best_val_acc,final_step,max_steps,stopped_early,diverged,attempt,letter_rate,train_min,eval_min,n_evals,total_min
+pilot_P0K_ZS,pilot_P0K_ZS,0.64,0.64,0.0,837,,,,,,,,,,,,
+pilot_P0_ZS,pilot_P0_ZS,0.64,0.64,0.0,837,,,,,,,,,,,,
+pilot_P1_Rand_N400_lr5e-5,pilot_P1_Rand_N400_lr5e-5,,,,,100,0.74,150,150,False,False,1,1.0,14.2,14.59,6,31.4
+pilot_P2_Rand_N400_lr1e-4,pilot_P2_Rand_N400_lr1e-4,,,,,75,0.75,150,150,False,False,1,1.0,14.19,14.53,6,31.3
+pilot_P3K_Rand_N400_lr2e-4,pilot_P3K_Rand_N400_lr2e-4,,,,,125,0.766,150,150,False,False,1,1.0,13.83,14.36,6,30.73
+pilot_P3_Rand_N400_lr2e-4,pilot_P3_Rand_N400_lr2e-4,,,,,150,0.766,150,150,False,False,1,1.0,14.14,14.46,6,31.2
+pilot_P4_Rand_N1200,pilot_P4_Rand_N1200,,,,,200,0.804,300,300,True,False,1,1.0,28.66,29.36,12,60.69
+pilot_P5_Hard_N1200,pilot_P5_Hard_N1200,,,,,200,0.792,300,300,True,False,1,1.0,28.93,29.52,12,61.11
+pilot_P6_Easy_N1200,pilot_P6_Easy_N1200,,,,,175,0.752,275,300,True,False,1,1.0,26.34,27.09,11,56.16
+pilot_P7_Rand_N1200_rep,pilot_P7_Rand_N1200_rep,,,,,200,0.796,300,300,True,False,1,1.0,28.87,29.89,12,61.41
