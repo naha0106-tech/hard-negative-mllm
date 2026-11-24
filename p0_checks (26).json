@@ -1,0 +1,97 @@
+{
+  "checks": {
+    "C1_채점재현": {
+      "pass": true,
+      "value": 0.64,
+      "기준": "0.642 ± 0.005"
+    },
+    "C2_실제출력": {
+      "pass": true,
+      "value": "20개 중 글자 응답 0개",
+      "기준": "기록만 (p0_samples.txt)"
+    },
+    "C3_길이": {
+      "pass": true,
+      "value": {
+        "max_tokens": 837,
+        "item_id": "validation_04064"
+      },
+      "기준": "< 2048"
+    },
+    "C4_마스킹": {
+      "pass": true,
+      "value": [
+        {
+          "item_id": "train_06367",
+          "answer": "A",
+          "K": 3,
+          "label_text": " A<end_of_utterance>"
+        },
+        {
+          "item_id": "train_05082",
+          "answer": "B",
+          "K": 4,
+          "label_text": " B<end_of_utterance>"
+        },
+        {
+          "item_id": "train_06367",
+          "answer": "C",
+          "K": 3,
+          "label_text": " C<end_of_utterance>"
+        },
+        {
+          "item_id": "train_03123",
+          "answer": "D",
+          "K": 4,
+          "label_text": " D<end_of_utterance>"
+        }
+      ],
+      "기준": "각 문항의 손실 토큰이 ' 정답글자<end_of_utterance>'뿐 (A·B·C·D 모두)"
+    },
+    "C5_글자토큰": {
+      "pass": true,
+      "value": {
+        "A": 330,
+        "B": 389,
+        "C": 340,
+        "D": 422,
+        "E": 414
+      },
+      "기준": "학습 타깃 글자 id = 채점 글자 id"
+    },
+    "C6_LoRA위치": {
+      "pass": true,
+      "value": {
+        "n_modules": 224,
+        "expected": 224,
+        "text_layers": 32,
+        "bad_modules": [],
+        "trainable_params": 8683520,
+        "total_params": 516165824,
+        "lora_dtype": "torch.float32",
+        "examples": [
+          "base_model.model.model.text_model.layers.0.mlp.down_proj",
+          "base_model.model.model.text_model.layers.0.mlp.gate_proj",
+          "base_model.model.model.text_model.layers.0.mlp.up_proj"
+        ]
+      },
+      "기준": "vision·connector 없음, 개수 = 언어모델 층 수 x 7"
+    },
+    "C7_LoRA초기값": {
+      "pass": true,
+      "value": 0.64,
+      "기준": "C1 값 0.64 ± 0.004"
+    },
+    "C8_기록재시작": {
+      "pass": true,
+      "value": {
+        "gpu": "Tesla T4",
+        "torch": "2.11.0+cu130",
+        "transformers": "4.51.3",
+        "peft": "0.15.2"
+      },
+      "기준": "GPU·버전 기록됨, 04_train.py가 DONE이면 건너뜀"
+    }
+  },
+  "all_pass": true
+}

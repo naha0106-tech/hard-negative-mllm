@@ -1,0 +1,64 @@
+{
+  "run_id": "pilot_P1_Rand_N400_lr5e-5",
+  "trainset": "trainsets/smolvlm_matched/Rand_N400_s0.jsonl",
+  "n_items": 400,
+  "lr": 5e-05,
+  "seed": 0,
+  "max_steps": 150,
+  "warmup_steps": 10,
+  "train_cfg": {
+    "precision": "fp16",
+    "lora": {
+      "r": 16,
+      "alpha": 32,
+      "dropout": 0.05,
+      "target_regex": "^(?!.*(vision_model|connector)).*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj)$"
+    },
+    "lr_candidates": [
+      5e-05,
+      0.0001,
+      0.0002
+    ],
+    "lr": null,
+    "micro_batch": 4,
+    "grad_accum": 4,
+    "min_steps": 150,
+    "epochs_equiv": 4,
+    "warmup_ratio": 0.05,
+    "warmup_min_steps": 10,
+    "eval_every": 25,
+    "patience": 4,
+    "max_grad_norm": 1.0,
+    "max_length": 2048,
+    "eval_batch": 8,
+    "diverge_drop": 0.05
+  },
+  "lora_report": {
+    "n_modules": 224,
+    "expected": 224,
+    "text_layers": 32,
+    "bad_modules": [],
+    "trainable_params": 8683520,
+    "total_params": 516165824,
+    "lora_dtype": "torch.float32",
+    "examples": [
+      "base_model.model.model.text_model.layers.0.mlp.down_proj",
+      "base_model.model.model.text_model.layers.0.mlp.gate_proj",
+      "base_model.model.model.text_model.layers.0.mlp.up_proj"
+    ]
+  },
+  "attempt": 1,
+  "env": {
+    "python": "3.13.16",
+    "torch": "2.14.1+cu130",
+    "transformers": "4.51.3",
+    "model_id": "HuggingFaceTB/SmolVLM-500M-Instruct",
+    "model_revision": "753c1752602b5e739af7a7fa6947a635051897a3",
+    "gpu": "Tesla T4",
+    "cuda": "13.0",
+    "peft": "0.15.2"
+  },
+  "reused_from": null,
+  "started": "2026-11-20T13:33:49",
+  "finished": "2026-11-20T14:05:13"
+}

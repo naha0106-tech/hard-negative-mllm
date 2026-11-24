@@ -1,0 +1,7 @@
+{
+  "run_id": "pilot_P0_ZS",
+  "val_acc": 0.64,
+  "val_acc_with_lora_init": 0.64,
+  "letter_rate_first20": 0.0,
+  "max_tokens": 837
+}
